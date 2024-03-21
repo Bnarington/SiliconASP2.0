@@ -1,0 +1,9 @@
+﻿@model HomeIndexViewModel
+
+@await Html.PartialAsync("~/Views/Shared/Sections/_Showcase.cshtml", Model.Showcase)
+@await Html.PartialAsync("~/Views/Shared/Sections/_Features.cshtml", Model.Features)
+@await Html.PartialAsync("~/Views/Shared/Sections/_DarkmodeShowcase.cshtml")
+@await Html.PartialAsync("~/Views/Shared/Sections/_Managework.cshtml", Model.Managework)
+@await Html.PartialAsync("~/Views/Shared/Sections/_Downloads.cshtml", Model.Downloads)
+@await Html.PartialAsync("~/Views/Shared/Sections/_Integrate.cshtml", Model.Integrate)
+@await Html.PartialAsync("~/Views/Shared/Sections/_Newsletter.cshtml", Model.Newsletter)

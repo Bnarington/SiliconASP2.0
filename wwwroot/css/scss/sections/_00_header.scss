@@ -1,0 +1,200 @@
+header {
+    padding: 15px 0;
+
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+        @include lg {
+            grid-template-columns: auto 1fr auto auto;
+            grid-template-areas:  "logo menu switch buttons";
+        }
+
+        #logo { grid-area: logo; }
+
+        .account-flex {
+            display: flex;
+
+            .account-buttons {
+                margin-right: 1.5rem;
+            }
+        }
+
+        .hidewhenbig {
+
+            @include ipad {
+                display: none;
+            }
+        }
+        
+        .btn-switch { 
+            grid-area: switch; 
+            display: block;
+        }
+
+        .hidewhensmall {
+            display: none;
+
+            @include ipad {
+                display: block;
+            }
+        }
+
+        .account-buttons { 
+            grid-area: buttons; 
+            display: none;
+            gap: 15px;
+
+            @include lg {
+                display: flex;
+            }
+        }
+
+        .btn-mobile {
+            grid-area: mobile; 
+            display: block;
+
+            @include lg {
+                display: none;
+            }
+        }
+
+        .mobile-nav-toggle {
+            display: none;
+        }
+
+
+
+        .nav-menu {
+
+            @include max-md {
+                display: block;
+                position: fixed;
+                z-index: 1000;
+                inset: 0 0 0 30%;
+                flex-direction: column;
+                padding: min(25vh, 8rem) 2em;
+
+                background: hsla(0, 1%, 64%, 0.644);
+
+                transform: translateX(100%);
+                transition: transform 350ms ease-out;
+            }
+
+
+
+            @supports (backdrop-filter: blur(1rem)) {
+                background: hsla(258, 90%, 66%, 0.514);
+                backdrop-filter: blur(0.1rem);
+            }
+
+
+        }
+
+        @include max-md {
+            .mobile-nav-toggle {
+                display: block;
+                position: absolute;
+                z-index: 9999;
+                background: url('../../../Images/Icons/icons8-hamburger-menu.svg');
+                background-repeat: no-repeat;
+                width: 2rem;
+                border: 0;
+                aspect-ratio: 1;
+                top: 2 rem;
+                right: 2rem;
+            }
+
+            .mobile-nav-toggle[aria-expanded="true"] {
+                background: url('../../../Images/Icons/bx-x.svg');
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+
+            
+            .nav-menu[data-visible="true"] {
+                transform: translateX(0%)
+            }
+
+            li {
+                padding-bottom: 1em;
+            }
+        }
+
+        @include ipad {
+            .nav-menu {
+                margin-top: 13px;
+                display: flex;
+                background: transparent;
+            }
+
+            li {
+                display: flex;
+                margin-left: 10px;
+                align-items:center;
+            }
+
+            .account-flex {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                margin-left: 5%;
+
+                @include ipad {
+                    flex-direction: column;
+                    gap: 5px;
+                }
+
+                @include xl {
+                    flex-direction: row;
+                    margin-left: 20%;
+                }
+                
+                .account-buttons {
+                    display: flex;
+                }
+
+                .btn-switch {
+                    display: flex;
+                }
+            }
+        }
+
+        
+        li {
+            list-style: none;
+        }
+    }
+}
+
+
+/* Header for Courses */
+
+.breadcrumb { 
+    padding: 10px 16px;
+    list-style: none;
+    background-color: #eee;
+
+    li {
+        display: inline;
+        font-size: 18px;
+    }
+
+    li+li:before {
+        padding: 8px;
+        color: black;
+        content: "/\00a0";
+    }
+
+    a {
+        color: #0275d8;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #01447e;
+        text-decoration: underline;
+    };
+}

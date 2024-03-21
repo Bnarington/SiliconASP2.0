@@ -1,0 +1,18 @@
+﻿@model IntegrateViewModel
+
+<div class="top-integrate">
+    <div class="integrate-header">
+        <h1>@Model.Title</h1>
+        <p>@Model.Description</p>
+    </div>
+
+    <div class="integrate-list">
+        @foreach(var item in Model.IntegrateItem)
+        {
+            <div class="integrate-grid-item">
+                <img src="@item.Image.ImageURL" alt="@item.Image.AltText">
+                <p>@item.Description</p>
+            </div>
+        }
+    </div>
+</div>

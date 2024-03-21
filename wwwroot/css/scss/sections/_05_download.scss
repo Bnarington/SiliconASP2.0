@@ -1,0 +1,58 @@
+.top-downloads {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    background: $gray-100;
+
+    justify-content: center;
+
+    .download-picture {
+        display: none;
+
+        @include xl {
+            display: block;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+    }
+
+    .store-texts {
+        display: flex;
+
+        flex-direction: column;
+        text-align: center;
+
+        p {
+            @include standard-text;
+            
+
+        }
+
+        .choice {
+            @include xl {
+                font-weight: 800;
+                color: #000;
+                font-size: large;
+            }
+        }
+
+        h6 {
+            @include standard-text;
+        }
+
+        .google-store {
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+        }
+    }
+
+    h1 {
+        @include standard-heading;
+        @include h5;
+        margin-top: 1rem;
+
+        @include xl {
+            @include h2;
+        }
+    }
+}

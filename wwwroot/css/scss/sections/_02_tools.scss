@@ -1,0 +1,73 @@
+.top-tools {
+    padding: 3rem;
+    margin-top: 5rem;
+    background-color: #F3F6FF;
+
+    @include xl {
+        max-width: 1920px;
+    }
+
+    .tools-header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+
+        .tool-header-text {
+            display: flex;
+            justify-content: center;
+            @include text-lg;
+            font-weight: 600;
+
+            @include xl {
+                @include h1;
+            }
+        }
+
+        p {
+            @include text-s;
+            @include text-m;
+        }
+    }
+
+    .tools-body {
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: auto;
+        justify-content: center;
+
+        @include xl {
+            max-width: 1920px;
+            grid-template-columns: max-content max-content max-content;
+        }
+
+        a {
+            display: flex;
+            padding: 2.5rem;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: $gray-700;
+            border-bottom: 1.3px rgba(128, 128, 128, 0.158) solid;
+            text-align: center;
+            box-sizing: border-box;
+
+
+            h4 {
+                @include text-lg;
+            }
+
+            p {
+                @include text-s;
+            }
+        }
+
+        a:hover {
+            background-color: white;
+            box-sizing: border-box;
+            border-radius: 5%;
+            box-shadow: 0px 2px 6.4px -1px rgba(19, 16, 34, 0.03), 0px 4.4px 12px -1px rgba(19, 16, 34, 0.06);
+
+        }
+    }
+}

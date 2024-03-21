@@ -1,0 +1,47 @@
+﻿<header>
+    <div class="container">
+        <img id="logo" src="~/Images/Silicon Logotype - Light Mode.svg" alt="Logo of the site, it shows the periodic table number for silicon with the words silicon next to it.">
+        <button class="mobile-nav-toggle" aria-controls="primary-nav" aria-expanded="false"><span class="sr-only">Menu</span></button>
+        <nav>
+            <ul data-visible="false" id="primary-nav" class="nav-menu">
+                <li class="nav-item">
+                    <a asp-controller="Home" asp-action="Index" asp-fragment="Overview" class="nav-link">Overview</a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Home" asp-action="Index" asp-fragment="Features" class="nav-link">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Home" asp-action="Index" asp-fragment="Contact" class="nav-link">Contact</a>
+                </li>
+                <li id="" class="nav-item hidewhenbig">
+                    <a asp-controller="Auth" asp-action="SignIn" class="btn-gray"><i class="fa-solid fa-right-to-bracket"></i>Sign in</a>
+                </li>
+                <li id="" class="nav-item hidewhenbig">
+                    <a asp-controller="Auth" asp-action="SignUp" class="btn-theme"><i class="fa-solid fa-user"></i>Sign up</a>
+                </li>
+
+                <li class="nav-item">
+                    <div class="btn-switch">
+                        <label>Light</label>
+                        <label class="switch" for="switch-mode">
+                            <input type="checkbox" id="switch-mode" />
+                            <span class="slider round"></span>
+                        </label>
+                        <label>Dark</label>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="account-flex hidewhensmall">
+            <div class="account-buttons">
+                <a asp-controller="Auth" asp-action="SignIn" class="btn-gray"><i class="fa-solid fa-right-to-bracket"></i>Sign in</a>
+            </div>
+
+            <div class="account-buttons">
+                <a asp-controller="Auth" asp-action="SignUp" class="btn-theme"><i class="fa-solid fa-user"></i>Sign up</a>
+            </div>
+        </div>
+
+    </div>
+</header>

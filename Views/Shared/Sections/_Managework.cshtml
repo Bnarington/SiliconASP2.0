@@ -1,0 +1,25 @@
+﻿@model ManageWorkViewModel
+
+<div id="@Model.Id" class="top-managework">
+    <div class="management-picture">
+        <img src="@Model.Image.ImageURL" alt="@Model.Image.AltText">
+    </div>
+
+    <div class="manage-list">
+        <div class="manage-title">
+            <h3>@Model.Title</h3>
+        </div>
+
+        <ul>
+            @foreach (var item in Model.ManageList)
+            {
+                <li><img src="@item.Image.ImageURL" alt="@item.Image.AltText"/>@item.text</li>
+            }
+        </ul>
+                      
+        <div class="center-button">
+            <button class="btn-theme" asp-controller="@Model.Link.ControllerName" asp-action="@Model.Link.ActionName"> @Html.Raw(Model.Link.Text) </button>
+        </div>
+                        
+    </div>
+</div>

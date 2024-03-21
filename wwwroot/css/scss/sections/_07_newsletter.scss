@@ -1,0 +1,56 @@
+.top-newsletter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+
+    background: var(--Gray-100, #F3F6FF);
+
+    margin-top: 2rem;
+
+    .newsletter-header {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+
+        position: relative;
+
+        img {
+            display: none;
+
+            @include xl {
+                display: block;
+                position: absolute;
+
+                top: 0%;
+                right: -15%;
+
+            }
+        }
+    }
+
+    .newsletters-email {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        display: flex;
+
+        flex-direction: column;
+
+        button {
+            margin-top: 1rem;
+        }
+
+        input {
+            display: flex;
+            padding: 0.8125rem 1rem;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1 0 0;
+
+            border-radius: 0.5rem;
+            border: 1px solid var(--Gray-400, #D4D7E5);
+            background: var(--White, #FFF);
+        }
+    }
+}

@@ -1,0 +1,44 @@
+.top-integrate { 
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+
+    .integrate-header {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        text-align: center;
+
+        @include standard-text;
+        @include standard-heading;
+
+        P{
+            margin-top: 0.5rem;
+            font-weight: 300;
+        }
+
+
+    }
+
+
+    .integrate-list {
+        margin-top: 2rem;
+        display: grid;
+        grid-template-rows: auto auto auto auto;
+        grid-template-columns: auto auto auto auto; 
+
+        justify-content: center;
+        gap: 2rem;
+
+        .integrate-grid-item {
+
+
+            p {
+                display: none;
+            }
+        }
+
+    }
+}

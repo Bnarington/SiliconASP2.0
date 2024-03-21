@@ -1,0 +1,23 @@
+﻿@model FeaturesViewModel
+
+<section id="@Model.Id" class="top-tools">
+    <div class="tools-header">
+        <h1 class="tool-header-text">@Model.Title</h1>
+        <p>@Model.TitleText</p>
+    </div>
+
+    <div class="tools-body">
+        @if (Model.FeatureCards != null)
+        {
+            foreach (var card in Model.FeatureCards)
+            {
+                <a href="@card.Link.ControllerName" class="link-card">
+                    <img src="@card.Image.ImageURL" alt="@card.Image.AltText">
+                    <h4>@card.Title</h4>
+                    <p>@Html.Raw(card.Text)</p>
+                </a>
+            }
+        }
+    </div>
+
+</section>

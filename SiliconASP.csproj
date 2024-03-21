@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
+    <None Include="wwwroot\css\scss\components\_buttons.scss" />
+    <None Include="wwwroot\css\scss\components\_links.scss" />
+    <None Include="wwwroot\css\scss\components\_validation.scss" />
+    <None Include="wwwroot\css\scss\core\_base.scss" />
+    <None Include="wwwroot\css\scss\core\_colors.scss" />
+    <None Include="wwwroot\css\scss\core\_media.scss" />
+    <None Include="wwwroot\css\scss\core\_sr-only.scss" />
+    <None Include="wwwroot\css\scss\core\_typography.scss" />
+    <None Include="wwwroot\css\scss\sections\_00_header.scss" />
+    <None Include="wwwroot\css\scss\sections\_01_taskmanagement.scss" />
+    <None Include="wwwroot\css\scss\sections\_02_tools.scss" />
+    <None Include="wwwroot\css\scss\sections\_03_sc_lightdark.scss" />
+    <None Include="wwwroot\css\scss\sections\_04_managework.scss" />
+    <None Include="wwwroot\css\scss\sections\_05_download.scss" />
+    <None Include="wwwroot\css\scss\sections\_06_integrateapps.scss" />
+    <None Include="wwwroot\css\scss\sections\_07_newsletter.scss" />
+    <None Include="wwwroot\css\scss\sections\_08_footer.scss" />
+    <None Include="wwwroot\css\scss\sections\_11_courses.scss" />
+    <None Include="wwwroot\css\scss\sections\_21_signin.scss" />
+    <None Include="wwwroot\css\scss\sections\_31_signup.scss" />
+    <None Include="wwwroot\css\scss\sections\_41_accountdetails.scss" />
+    <None Include="wwwroot\css\scss\_components.scss" />
+    <None Include="wwwroot\css\scss\_core.scss" />
+    <None Include="wwwroot\css\scss\_sections.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+</Project>

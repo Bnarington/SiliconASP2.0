@@ -1,0 +1,24 @@
+﻿@model NewsletterViewModel
+
+<div class="top-newsletter">
+    <div class="newsletter-header">
+        <h1>@Model.Title</h1>
+        <p>@Model.Description</p>
+        <img src="@Model.Image.ImageURL" alt="@Model.Image.AltText">
+    </div>
+
+    <div class="newsletter-checkboxes">
+        @foreach(var item in Model.Options)
+        {
+            <label class="Checkbox">
+                <input type="checkbox" name="@item.Name" id=""> @item.Name
+            </label>
+        }
+    </div>
+    <form method="post" action="@Url.Action("Subscibe", "Newsletter")">
+        <div class="newsletters-email">
+            <input type="email" name="Email" id="" placeholder="Enter Email">  <button class="btn-theme">Subscribe*</button>
+            <p>* Yes, I agree to the <a href="@Model.TermsLink">@Model.TermsLink.Text</a> and <a href="@Model.PrivacyLink">privacy</a>@Model.PrivacyLink.Text</p>
+        </div>
+    </form>
+</div>

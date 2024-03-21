@@ -1,0 +1,37 @@
+﻿@model DownloadsViewModel
+
+<div class="top-downloads">
+    <div class="download-picture">
+        <img src="@Model.Image.ImageURL" alt="@Model.Image.AltText">
+    </div>
+
+    <div class="download-text">
+        <h1>
+            @Model.Title
+        </h1>
+
+        <div class="store-texts">
+            <div class="app-store">
+                <h6>@Model.AppStore.Title</h6>
+                @foreach (var stars in Model.AppStore.Stars)
+                {
+                    <img src="@stars.ImageURL" alt="@stars.AltText" class="appstore-star" />
+                }
+                <p class="choice">@Model.AppStore.DescriptionTitle</p>
+                <p>@Model.AppStore.Description</p>
+                <img src="@Model.AppStore.Icon.ImageURL" alt="">
+            </div>
+
+            <div class="google-store">
+                <h6>@Model.GoogleStore.Title</h6>
+                @foreach (var stars in Model.GoogleStore.Stars)
+                {
+                    <img src="@stars.ImageURL" alt="@stars.AltText" class="appstore-star" />
+                }
+                <p class="choice">@Model.GoogleStore.DescriptionTitle</p>
+                <p>@Model.GoogleStore.Description</p>
+                <img src="@Model.GoogleStore.Icon.ImageURL" alt="">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+﻿<footer>
+    <div class="container">
+        <div class="@((ViewContext.RouteData.Values["Controller"]!.ToString() == "Auth") ? "hide" : "social-media")">
+            <a href="https://www.facebook.com" class="btn-social"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.x.com" class="btn-social"><i class="fa-brands fa-square-x-twitter"></i></a>
+            <a href="https://www.instagram.com" class="btn-social"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.youtube.com" class="btn-social"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <p>© @DateTime.Now.Year Silicon. All rights reserved. Pulvinar urna condimentum amet tempor, ornare integer. Lorem odio justo malesuada suspendisse viverra aliquet quisque turpis non. Feugiat in odio non nunc ornare consectetur.</p>
+    </div>
+</footer>

@@ -1,0 +1,172 @@
+.signup-form {
+    align-content: center;
+    justify-content: center;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+
+    @include xl {
+        flex-shrink: 0;  
+    }
+
+
+    h1 {
+        color: var(--Gray-900, #0B0F19);
+        font-feature-settings: 'clig' off, 'liga' off;
+
+        @include h3;
+
+        @include lg {
+        /* Heading / H1 */
+        font-family: Manrope;
+        font-size: 2.5rem;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 130%; /* 3.25rem */
+        }
+
+    }
+
+    .signin-text {
+        color: var(--Gray-700, #565973);
+        font-feature-settings: 'clig' off, 'liga' off;
+        /* Body/M */
+        font-family: Manrope;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%; /* 1.6rem */
+
+        a{
+            color: var(--Brand-Primary, #6366F1);
+            font-feature-settings: 'clig' off, 'liga' off;
+            /* Body/M */
+            font-family: Manrope;
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 160%;
+            text-decoration: none;
+        }
+    }
+
+    .password {
+        border-radius: 0.5rem;
+        border: 1px solid var(--Gray-400, #D4D7E5);
+        background: var(--White, #FFF);
+        width: 100%;
+    }
+
+    .email {
+        border-radius: 0.5rem;
+        border: 1px solid var(--Gray-400, #D4D7E5);
+        background: var(--White, #FFF);
+        width: 100%;
+    }
+
+    .checkmark {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .labels {
+        color: var(--Gray-900, #0B0F19);
+        font-feature-settings: 'clig' off, 'liga' off;
+        font-family: Manrope;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 160%; /* 1.6rem */
+
+        margin-bottom: 0;
+    }
+
+    .remcheck-label {
+        color: var(--Gray-700, #565973);
+        font-feature-settings: 'clig' off, 'liga' off;
+
+        /* Body/M */
+        font-family: Manrope;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%; /* 1.6rem */
+    }
+
+    .firstname {
+        border-radius: 0.5rem;
+        border: 1px solid var(--Gray-400, #D4D7E5);
+        background: var(--White, #FFF);
+    }
+
+    .lastname {
+        border-radius: 0.5rem;
+        border: 1px solid var(--Gray-400, #D4D7E5);
+        background: var(--White, #FFF);
+    }
+
+    //Validation styling
+.error {
+
+    input {
+        border-color: #EF4444;
+        background-image: url(../../../Images/Icons/bx-red-x.svg);
+        display: inline-block;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+        background-position: right;
+    }
+
+    color: var(--System-Error, #EF4444);
+
+    /* Body/XS */
+    font-family: Manrope;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%; /* 1.2rem */
+}
+
+.input-control {
+    display: flex;
+    flex-direction: column;
+    height: 4rem;
+    margin-bottom: 1rem;
+}
+
+.success {
+    color: var(--System-Success, #22C55E);
+
+    input {
+        border-color: #22C55E;
+        background-image: url(../../../Images/Icons/bx-green-checkmark.svg);
+        display: inline-block;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+        background-position: right;
+    }
+
+    /* Body/XS */
+    font-family: Manrope;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%; /* 1.2rem */
+}
+
+.error-styling {
+    display: flex;
+    padding: 0rem 0.5rem;
+    align-items: flex-start;
+    gap: 0.25rem;
+
+    border-radius: 0.25rem;
+    background: rgba(239, 68, 68, 0.12);
+
+    color: var(--System-Error, #EF4444);
+}
+
+
+}
+
+
