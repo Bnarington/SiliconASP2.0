@@ -1,12 +1,26 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SiliconASP.ViewModels.Sections;
 
 namespace SiliconASP.Controllers;
 
 public class AuthController : Controller
 {
     [Route("/signup")]
+    [HttpGet]
     public IActionResult SignUp()
     {
-        return View();
+        var viewModel = new SignUpViewModel();
+        return View(viewModel);
+    }
+
+    [Route("/signup")]
+    [HttpPost]
+        public IActionResult SignUp(SignUpViewModel model)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View(model);
+        }
+        return RedirectToAction("Index", "Home");
     }
 }
