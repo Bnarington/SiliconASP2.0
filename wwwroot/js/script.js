@@ -150,7 +150,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     function signUpValidation() {
-
         const firstName = document.getElementById('firstname');
         const lastName = document.getElementById('lastname');
         const confPassword = document.getElementById('conf-password');
@@ -171,8 +170,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 errorDisplay.innerText = message;
                 inputControl.classList.add('error');
                 inputControl.classList.remove('success');
-
-                console.log('Error has triggered!')
             }
 
             const setSuccess = element => {
@@ -182,24 +179,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 errorDisplay.innerText = '';
                 inputControl.classList.add('success');
                 inputControl.classList.remove('error');
-
-                console.log('Success has triggered!')
             }
 
             if (!firstNameValue) {
-                setError(firstName, 'A first name must be provided.')
+                setError(firstName, 'A first name must be provided.');
             } else if (firstNameValue.length < 2) {
-                setError(firstName, 'A name must contain more than 2 letters.')
+                setError(firstName, 'A name must contain more than 2 letters.');
             } else {
-                setSuccess(firstName)
+                setSuccess(firstName);
             }
 
             if (!lastNameValue) {
-                setError(lastName, 'A surname must be provided.')
+                setError(lastName, 'A surname must be provided.');
             } else if (lastNameValue.length < 2) {
-                setError(lastName, 'A name must contain more than 2 letters.')
+                setError(lastName, 'A name must contain more than 2 letters.');
             } else {
-                setSuccess(lastName)
+                setSuccess(lastName);
             }
 
             if (!emailValue) {
@@ -212,36 +207,34 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (!passwordValue) {
                 setError(password, 'Enter a password');
-            } else if (!isValidPassword(password)) {
-                setError(email, 'The password you have entered is not valid.')
+            } else if (!isValidPassword(passwordValue)) {
+                setError(password, 'The password you have entered is not valid.')
             } else {
-                setSuccess(password)
+                setSuccess(password);
             }
-
 
             if (!confPasswordValue) {
-                setError(confPassword, 'Enter your password again.')
+                setError(confPassword, 'Enter your password again.');
             } else if (confPasswordValue !== passwordValue) {
-                setError(confPassword, 'The passwords are not the same')
+                setError(confPassword, 'The passwords are not the same');
             } else {
-                setSuccess(confPassword)
-            }
-
-            function isValidEmail(email) {
-                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                return emailRegex.test(email);
-            }
-
-            function isValidPassword(password) {
-                var passwordRegex = /^ (?=.* [a - z])(?=.* [A - Z])(?=.*\.d)(?=.* [^\.w\.s]).{ 8,}$/
-                return passwordRegex.test(password)
+                setSuccess(confPassword);
             }
         }
 
         validateSignUpForm();
     }
 
-});
+    function isValidEmail(email) {
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function isValidPassword(password) {
+        var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d\s]).{8,}$/;
+        return passwordRegex.test(password);
+    }
+
 
 //Darkmode toggle
 
