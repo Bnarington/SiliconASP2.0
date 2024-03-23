@@ -149,7 +149,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-
     function signUpValidation() {
         const firstName = document.getElementById('firstname');
         const lastName = document.getElementById('lastname');
@@ -164,78 +163,79 @@ document.addEventListener('DOMContentLoaded', function () {
             const passwordValue = password.value.trim();
             const confPasswordValue = confPassword.value.trim();
 
+            const errors = {};
+
             const setError = (element, message) => {
                 const inputControl = element.parentElement;
                 const errorDisplay = inputControl.querySelector('.error');
 
-                errorDisplay.innerText = message;
+                if (!errors[element.id]) {
+                    errors[element.id] = [];
+                }
+
+                errors[element.id].push(message);
+
+                errorDisplay.innerText = errors[element.id].join(', ');
                 inputControl.classList.add('error');
                 inputControl.classList.remove('success');
-            }
+            };
 
             const setSuccess = element => {
                 const inputControl = element.parentElement;
                 const errorDisplay = inputControl.querySelector('.error');
 
-                errorDisplay.innerText = '';
+                if (errors[element.id]) {
+                    delete errors[element.id];
+                    errorDisplay.innerText = '';
+                    inputControl.classList.remove('error');
+                }
                 inputControl.classList.add('success');
-                inputControl.classList.remove('error');
-            }
+            };
 
             // Validation checks
             if (!firstNameValue) {
                 setError(firstName, 'A first name must be provided.');
-                return false;
             } else if (firstNameValue.length < 2) {
                 setError(firstName, 'A name must contain more than 2 letters.');
-                return false;
             } else {
                 setSuccess(firstName);
             }
 
             if (!lastNameValue) {
                 setError(lastName, 'A surname must be provided.');
-                return false;
             } else if (lastNameValue.length < 2) {
                 setError(lastName, 'A name must contain more than 2 letters.');
-                return false;
             } else {
                 setSuccess(lastName);
             }
 
             if (!emailValue) {
                 setError(email, 'Email is required');
-                return false;
             } else if (!isValidEmail(emailValue)) {
                 setError(email, 'Provide a valid email');
-                return false;
             } else {
                 setSuccess(email);
             }
 
             if (!passwordValue) {
                 setError(password, 'Enter a password');
-                return false;
             } else if (!isValidPassword(passwordValue)) {
-                setError(password, 'The password you have entered is not valid.')
-                return false;
+                setError(password, 'The password you have entered is not valid.');
             } else {
                 setSuccess(password);
             }
 
             if (!confPasswordValue) {
                 setError(confPassword, 'Enter your password again.');
-                return false;
             } else if (confPasswordValue !== passwordValue) {
                 setError(confPassword, 'The passwords are not the same');
-                return false;
             } else {
                 setSuccess(confPassword);
             }
 
-            // All validations passed
-            return true;
-        }
+            // Return final result
+            return Object.keys(errors).length === 0;
+        };
 
         function isValidEmail(email) {
             var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -249,8 +249,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         return validateSignUpForm();
     }
-
 });
+
+
 
 
 //Darkmode toggle
