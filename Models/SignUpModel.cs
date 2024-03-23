@@ -14,7 +14,7 @@ public class SignUpModel
 
     [DataType(DataType.EmailAddress)]
     [Display(Name = "Email adress", Prompt = "Enter your email adress", Order = 2)]
-    [RegularExpression("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$\r\n", ErrorMessage = "Invalid email address.")]
+    [RegularExpression("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", ErrorMessage = "Invalid email address.")]
     public string Email { get; set; } = null!;
 
     [DataType(DataType.Password)]

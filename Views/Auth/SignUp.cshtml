@@ -47,7 +47,7 @@
             </div>
 
             <div class="checkmark">
-                <input asp-for="SignUpForm.TermsAndConditions" type="checkbox" id="term-check" class="termscheck" title="Remember me" required>
+                <input asp-for="SignUpForm.TermsAndConditions" type="checkbox" id="term-check" class="termscheck" title="Remember me">
                 <label for="term-check" class="term-label">I agree to the <a asp-controller="About" asp-action="Terms">Terms</a> & <a asp-controller="About" asp-action="Conditions">Conditions</a>.</label>
                 <span asp-validation-for="SignUpForm.TermsAndConditions" class="error error-styling"></span>
                 <div></div>

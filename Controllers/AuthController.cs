@@ -16,6 +16,11 @@ public class AuthController : Controller
     [Route("/signup")]
     public IActionResult SignUp(SignUpViewModel model)
     {
+        if (!model.SignUpForm.TermsAndConditions)
+        {
+            ModelState.AddModelError("SignUpForm.TermsAndConditions", "You must agree to the Terms and Conditions.");
+        }
+        
         if (!ModelState.IsValid)
         {
             return View(model);

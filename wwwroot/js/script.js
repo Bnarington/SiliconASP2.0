@@ -144,8 +144,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const signupForm = document.querySelector('.signup-form');
 
     signupForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        signUpValidation();
+        if (!signUpValidation()) {
+            e.preventDefault();
+        }
     });
 
 
@@ -181,45 +182,59 @@ document.addEventListener('DOMContentLoaded', function () {
                 inputControl.classList.remove('error');
             }
 
+            // Validation checks
             if (!firstNameValue) {
                 setError(firstName, 'A first name must be provided.');
+                return false;
             } else if (firstNameValue.length < 2) {
                 setError(firstName, 'A name must contain more than 2 letters.');
+                return false;
             } else {
                 setSuccess(firstName);
             }
 
             if (!lastNameValue) {
                 setError(lastName, 'A surname must be provided.');
+                return false;
             } else if (lastNameValue.length < 2) {
                 setError(lastName, 'A name must contain more than 2 letters.');
+                return false;
             } else {
                 setSuccess(lastName);
             }
 
             if (!emailValue) {
                 setError(email, 'Email is required');
+                return false;
             } else if (!isValidEmail(emailValue)) {
                 setError(email, 'Provide a valid email');
+                return false;
             } else {
                 setSuccess(email);
             }
 
             if (!passwordValue) {
                 setError(password, 'Enter a password');
+                return false;
             } else if (!isValidPassword(passwordValue)) {
                 setError(password, 'The password you have entered is not valid.')
+                return false;
             } else {
                 setSuccess(password);
             }
 
             if (!confPasswordValue) {
                 setError(confPassword, 'Enter your password again.');
+                return false;
             } else if (confPasswordValue !== passwordValue) {
                 setError(confPassword, 'The passwords are not the same');
+                return false;
             } else {
                 setSuccess(confPassword);
             }
+
+            // All validations passed
+            return true;
         }
 
         function isValidEmail(email) {
@@ -232,10 +247,11 @@ document.addEventListener('DOMContentLoaded', function () {
             return passwordRegex.test(password);
         }
 
-        validateSignUpForm();
+        return validateSignUpForm();
     }
 
-}
+});
+
 
 //Darkmode toggle
 
@@ -262,4 +278,3 @@ document.addEventListener('DOMContentLoaded', function () {
 //        }
 //    });
 //}));
-)
