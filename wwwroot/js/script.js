@@ -15,267 +15,254 @@ navToggle.addEventListener('click', () => {
 });
 
 
-//script and styling has been picked up from here. https://codepen.io/costdev/pen/NWqyqXb
-/*clickAndSelect()*/
+/*script and styling has been picked up from here. https://codepen.io/costdev/pen/NWqyqXb */
+clickAndSelect()
 
-//function clickAndSelect() {
-//  let cards = Array.from( document.querySelectorAll('.card') ),
-//      elements = []
-  
-//  // Add child nodes to clickable elements
-//  cards.forEach(card => {
-//    elements = elements.concat( Array.from(card.children) )
-//  })
+function clickAndSelect() {
+  let cards = Array.from( document.querySelectorAll('.card') ),
+      elements = []
 
-//  // Attach to mouse events
-//  elements.forEach(element => {
-    
-//    // click: Disable
-//    element.addEventListener('click', e => e.preventDefault())
-    
-//    // mousedown: Log the timestamp
-//    element.addEventListener('mousedown', e => {
-//      let card = e.target.closest(".card")
-//      card.setAttribute('data-md', Date.now())
-//    })
-    
-//    // mouseup: Determine whether to click
-//    element.addEventListener('mouseup', e => {
-      
-//      // Only one please
-//      e.stopPropagation();
+  // Add child nodes to clickable elements
+  cards.forEach(card => {
+    elements = elements.concat( Array.from(card.children) )
+  })
 
-//      let card = (e.target.classList.contains("card")) ? e.target : e.target.closest('.card'),
-//          then = card.getAttribute('data-md'),
-//          now = Date.now()
+  // Attach to mouse events
+  elements.forEach(element => {
 
-//      // Allow 200ms to distinguish click from non-click
-//      if(now - then < 200) {
-        
-//        // Visit the link in the card
-//        // Change 'a' to a class if you have multiple links
-//        window.location = card.querySelector('a').href
-    
-//        // Remove for production
-//        card.classList.add('visited')
-//        console.log(card.querySelector('a').href)
-        
-//      }
-  
-//      // Clean up
-//      card.removeAttribute('data-md')
-      
-//    })
-//  })
-//}
+    // click: Disable
+    element.addEventListener('click', e => e.preventDefault())
 
-//login - form validation
+    // mousedown: Log the timestamp
+    element.addEventListener('mousedown', e => {
+      let card = e.target.closest(".card")
+      card.setAttribute('data-md', Date.now())
+    })
 
-//document.addEventListener('DOMContentLoaded', function () {
-//    const signInForm = document.querySelector('.signin-form');
+    // mouseup: Determine whether to click
+    element.addEventListener('mouseup', e => {
 
-//    signInForm.addEventListener('submit', (e) => {
-//        e.preventDefault();
-//        SignInvValidation();
-//    });
+      // Only one please
+      e.stopPropagation();
 
+      let card = (e.target.classList.contains("card")) ? e.target : e.target.closest('.card'),
+          then = card.getAttribute('data-md'),
+          now = Date.now()
 
-//    function SignInvValidation() {
+      // Allow 200ms to distinguish click from non-click
+      if(now - then < 200) {
 
+        // Visit the link in the card
+        // Change 'a' to a class if you have multiple links
+        window.location = card.querySelector('a').href
 
-//        const email = document.getElementById('email');
-//        const password = document.getElementById('password');
+        // Remove for production
+        card.classList.add('visited')
+        console.log(card.querySelector('a').href)
 
-//        const setError = (element, message) => {
-//            const inputControl = element.parentElement;
-//            const errorDisplay = inputControl.querySelector('.error');
+      }
 
-//            errorDisplay.innerText = message;
-//            inputControl.classList.add('error');
-//            inputControl.classList.remove('success');
+      // Clean up
+      card.removeAttribute('data-md')
 
-//            console.log('Error has triggered!')
-//        }
+    })
+  })
+}
 
-//        const setSuccess = element => {
-//            const inputControl = element.parentElement;
-//            const errorDisplay = inputControl.querySelector('.error');
-
-//            errorDisplay.innerText = '';
-//            inputControl.classList.add('success');
-//            inputControl.classList.remove('error');
-
-//            console.log('Success has triggered!')
-//        }
-
-//        const validateSigninForm = () => {
-//            const emailValue = email.value.trim();
-//            const passwordValue = password.value.trim();
-
-//            if (!emailValue) {
-//                setError(email, 'Email is required');
-//            } else if (!isValidEmail(emailValue)) {
-//                setError(email, 'Provide a valid email');
-//            } else {
-//                setSuccess(email);
-//            }
-
-//            if (!passwordValue) {
-//                setError(password, 'Enter a password');
-//            } else {
-//                setSuccess(password)
-//            }
-
-//            function isValidEmail(email) {
-//                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//                return emailRegex.test(email);
-//            }
-//        }
-
-//        validateSigninForm
-//    }
-
-
-//});
-
-//Sign up validation
+/*login - form validation*/
 
 document.addEventListener('DOMContentLoaded', function () {
-    const signupForm = document.querySelector('.signup-form');
+    const signInForm = document.querySelector('.signin-form');
+    const signUpForm = document.querySelector('.signup-form');
 
-    signupForm.addEventListener('submit', (e) => {
-        if (!signUpValidation()) {
-            e.preventDefault();
-        }
-    });
-
-    function signUpValidation() {
-        const firstName = document.getElementById('firstname');
-        const lastName = document.getElementById('lastname');
-        const confPassword = document.getElementById('conf-password');
-        const email = document.getElementById('email');
-        const password = document.getElementById('password');
-
-        const validateSignUpForm = () => {
-            const firstNameValue = firstName.value.trim();
-            const lastNameValue = lastName.value.trim();
-            const emailValue = email.value.trim();
-            const passwordValue = password.value.trim();
-            const confPasswordValue = confPassword.value.trim();
-
-            const errors = {};
-
-            const setError = (element, message) => {
-                const inputControl = element.parentElement;
-                const errorDisplay = inputControl.querySelector('.error');
-
-                if (!errors[element.id]) {
-                    errors[element.id] = [];
-                }
-
-                errors[element.id].push(message);
-
-                errorDisplay.innerText = errors[element.id].join(', ');
-                inputControl.classList.add('error');
-                inputControl.classList.remove('success');
-            };
-
-            const setSuccess = element => {
-                const inputControl = element.parentElement;
-                const errorDisplay = inputControl.querySelector('.error');
-
-                if (errors[element.id]) {
-                    delete errors[element.id];
-                    errorDisplay.innerText = '';
-                    inputControl.classList.remove('error');
-                }
-                inputControl.classList.add('success');
-            };
-
-            // Validation checks
-            if (!firstNameValue) {
-                setError(firstName, 'A first name must be provided.');
-            } else if (firstNameValue.length < 2) {
-                setError(firstName, 'A name must contain more than 2 letters.');
-            } else {
-                setSuccess(firstName);
+    if (signInForm) {
+        signInForm.addEventListener('submit', (e) => {
+            if (!signInValidation()) {
+                e.preventDefault();
             }
+        });
+    }
 
-            if (!lastNameValue) {
-                setError(lastName, 'A surname must be provided.');
-            } else if (lastNameValue.length < 2) {
-                setError(lastName, 'A name must contain more than 2 letters.');
-            } else {
-                setSuccess(lastName);
+    if (signUpForm) {
+        signUpForm.addEventListener('submit', (e) => {
+            if (!signUpValidation()) {
+                e.preventDefault();
             }
-
-            if (!emailValue) {
-                setError(email, 'Email is required');
-            } else if (!isValidEmail(emailValue)) {
-                setError(email, 'Provide a valid email');
-            } else {
-                setSuccess(email);
-            }
-
-            if (!passwordValue) {
-                setError(password, 'Enter a password');
-            } else if (!isValidPassword(passwordValue)) {
-                setError(password, 'The password you have entered is not valid.');
-            } else {
-                setSuccess(password);
-            }
-
-            if (!confPasswordValue) {
-                setError(confPassword, 'Enter your password again.');
-            } else if (confPasswordValue !== passwordValue) {
-                setError(confPassword, 'The passwords are not the same');
-            } else {
-                setSuccess(confPassword);
-            }
-
-            // Return final result
-            return Object.keys(errors).length === 0;
-        };
-
-        function isValidEmail(email) {
-            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
-        }
-
-        function isValidPassword(password) {
-            var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d\s]).{8,}$/;
-            return passwordRegex.test(password);
-        }
-
-        return validateSignUpForm();
+        });     
     }
 });
 
+function signInValidation() {
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+
+    const setError = (element, message) => {
+        const inputControl = element.parentElement;
+        const errorDisplay = inputControl.querySelector('.error');
+
+        errorDisplay.innerText = message;
+        inputControl.classList.add('error');
+        inputControl.classList.remove('success');
+
+        console.log('Error has triggered!')
+    }
+
+    const setSuccess = element => {
+        const inputControl = element.parentElement;
+        const errorDisplay = inputControl.querySelector('.error');
+
+        errorDisplay.innerText = '';
+        inputControl.classList.add('success');
+        inputControl.classList.remove('error');
+
+        console.log('Success has triggered!')
+    }
+
+    const validateSigninForm = () => {
+        const emailValue = email.value.trim();
+        const passwordValue = password.value.trim();
+
+        if (!emailValue) {
+            setError(email, 'Enter your email');
+        } else {
+            setSuccess(email);
+        }
+
+        if (!passwordValue) {
+            setError(password, 'Enter a password');
+        } else {
+            setSuccess(password)
+        }
+    }
+
+    validateSigninForm();
+}
+
+function signUpValidation() {
+    const firstName = document.getElementById('firstname');
+    const lastName = document.getElementById('lastname');
+    const confPassword = document.getElementById('conf-password');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+
+    const validateSignUpForm = () => {
+        const firstNameValue = firstName.value.trim();
+        const lastNameValue = lastName.value.trim();
+        const emailValue = email.value.trim();
+        const passwordValue = password.value.trim();
+        const confPasswordValue = confPassword.value.trim();
+
+        const errors = {};
+
+        const setError = (element, message) => {
+            const inputControl = element.parentElement;
+            const errorDisplay = inputControl.querySelector('.error');
+
+            if (!errors[element.id]) {
+                errors[element.id] = [];
+            }
+
+            errors[element.id].push(message);
+
+            errorDisplay.innerText = errors[element.id].join(', ');
+            inputControl.classList.add('error');
+            inputControl.classList.remove('success');
+        };
+
+        const setSuccess = element => {
+            const inputControl = element.parentElement;
+            const errorDisplay = inputControl.querySelector('.error');
+
+            if (errors[element.id]) {
+                delete errors[element.id];
+                errorDisplay.innerText = '';
+                inputControl.classList.remove('error');
+            }
+            inputControl.classList.add('success');
+        };
+
+        // Validation checks
+        if (!firstNameValue) {
+            setError(firstName, 'A first name must be provided.');
+        } else if (firstNameValue.length < 2) {
+            setError(firstName, 'A name must contain more than 2 letters.');
+        } else {
+            setSuccess(firstName);
+        }
+
+        if (!lastNameValue) {
+            setError(lastName, 'A surname must be provided.');
+        } else if (lastNameValue.length < 2) {
+            setError(lastName, 'A name must contain more than 2 letters.');
+        } else {
+            setSuccess(lastName);
+        }
+
+        if (!emailValue) {
+            setError(email, 'Email is required');
+        } else if (!isValidEmail(emailValue)) {
+            setError(email, 'Provide a valid email');
+        } else {
+            setSuccess(email);
+        }
+
+        if (!passwordValue) {
+            setError(password, 'Enter a password');
+        } else if (!isValidPassword(passwordValue)) {
+            setError(password, 'The password you have entered is not valid.');
+        } else {
+            setSuccess(password);
+        }
+
+        if (!confPasswordValue) {
+            setError(confPassword, 'Enter your password again.');
+        } else if (confPasswordValue !== passwordValue) {
+            setError(confPassword, 'The passwords are not the same');
+        } else {
+            setSuccess(confPassword);
+        }
+
+        // Return final result
+        return Object.keys(errors).length === 0;
+    };
+
+    function isValidEmail(email) {
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function isValidPassword(password) {
+        var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d\s]).{8,}$/;
+        return passwordRegex.test(password);
+    }
+
+    validateSignUpForm();
+}
 
 
 
-//Darkmode toggle
+/*Darkmode toggle*/
 
-//document.addEventListener('DOMContentLoaded', () => {
-//    const switcher = document.getElementById('theme-switcher');
+document.addEventListener('DOMContentLoaded', () => {
+    const switcher = document.getElementById('theme-switcher');
 
-//    // Apply the theme on initial load
-//    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-//        document.documentElement.setAttribute('data-theme', 'dark');
-//        switcher.checked = true;
-//    } else {
-//        document.documentElement.setAttribute('data-theme', 'light');
-//    }
+    // Apply the theme on initial load
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        switcher.checked = true;
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
 
-//    // Listen for toggle of the theme switch
-//    switcher.addEventListener('change', function () {
-//        console.log('theme changed')
-//        if (this.checked) {
-//            document.documentElement.setAttribute('data-theme', 'dark');
-//            localStorage.setItem('theme', 'dark');
-//        } else {
-//            document.documentElement.setAttribute('data-theme', 'light');
-//            localStorage.setItem('theme', 'light');
-//        }
-//    });
-//}));
+    // Listen for toggle of the theme switch
+    switcher.addEventListener('change', function () {
+        console.log('theme changed')
+        if (this.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }
+    });
+});

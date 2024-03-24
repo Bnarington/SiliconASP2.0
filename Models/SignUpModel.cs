@@ -19,7 +19,7 @@ public class SignUpModel
 
     [DataType(DataType.Password)]
     [Display(Name = "Password", Prompt = "Enter your password, it needs 1 lowercase, 1 uppercase, 1 digit, 1 specialcharachter, atleast 8 characters in total.", Order = 3)]
-    [Required(ErrorMessage = "Invalid first name")]
+    [Required(ErrorMessage = "Invalid password")]
     [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\w\\s]).{8,}$", ErrorMessage = "Invalid Password.")]
     public string Password { get; set; } = null!;
 
