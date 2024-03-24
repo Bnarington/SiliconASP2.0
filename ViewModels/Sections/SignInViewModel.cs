@@ -7,4 +7,6 @@ public class SignInViewModel
     public string Title { get; set; } = "Sign In";
 
     public SignInModel SignInForm { get; set; } = null!;
+
+    public string? ErrorMessage { get; set; }
 }

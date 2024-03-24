@@ -129,7 +129,7 @@ function signInValidation() {
         }
 
         if (!passwordValue) {
-            setError(password, 'Enter a password');
+            setError(password, 'Enter your password');
         } else {
             setSuccess(password)
         }

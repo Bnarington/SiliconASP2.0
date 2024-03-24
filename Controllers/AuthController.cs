@@ -44,7 +44,13 @@ public class AuthController : Controller
         {
             return View(model);
         }
-        return RedirectToAction("Auth", "Signin");
+
+        //var result = _authService.SignIn(model.Form)
+        //if (result)
+        //    return RedirectToAction("Auth", "SignIn");
+
+        model.ErrorMessage = "Invalid Email or Password";
+        return View(model);
     }
 }
 
