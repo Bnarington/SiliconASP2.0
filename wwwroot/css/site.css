@@ -1306,6 +1306,7 @@ footer .container .social-media {
   text-align: left;
   display: flex;
   flex-direction: column;
+  gap: 2rem;
 }
 @media (min-width: 1200px) {
   .top-title .signin-form {
@@ -1359,12 +1360,14 @@ footer .container .social-media {
   border: 1px solid var(--Gray-400, #D4D7E5);
   background: var(--White, #FFF);
   width: 100%;
+  padding: 0.5rem;
 }
 .top-title .signin-form .email {
   border-radius: 0.5rem;
   border: 1px solid var(--Gray-400, #D4D7E5);
   background: var(--White, #FFF);
   width: 100%;
+  padding: 0.5rem;
 }
 .top-title .signin-form .checkmark {
   margin-top: 1rem;
