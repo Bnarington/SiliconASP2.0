@@ -244,7 +244,7 @@ function signUpValidation() {
 /*Darkmode toggle*/
 
 document.addEventListener('DOMContentLoaded', () => {
-    const switcher = document.getElementById('theme-switcher');
+    const switcher = document.getElementById('switch-mode');
 
     // Apply the theme on initial load
     if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {

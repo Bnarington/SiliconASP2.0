@@ -1809,3 +1809,52 @@ footer .container .social-media {
 .top-details .top-form #city {
   margin-bottom: 1rem;
 }
+.top-details .error {
+  color: var(--System-Error, #EF4444);
+  /* Body/XS */
+  font-family: Manrope;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%; /* 1.2rem */
+}
+.top-details .error input {
+  border-color: #EF4444;
+  background-image: url(../../../Images/Icons/bx-red-x.svg);
+  display: inline-block;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  background-position: right;
+}
+.top-details .input-control {
+  display: flex;
+  flex-direction: column;
+  height: 4rem;
+  margin-bottom: 1rem;
+}
+.top-details .success {
+  color: var(--System-Success, #22C55E);
+  /* Body/XS */
+  font-family: Manrope;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%; /* 1.2rem */
+}
+.top-details .success input {
+  border-color: #22C55E;
+  background-image: url(../../../Images/Icons/bx-green-checkmark.svg);
+  display: inline-block;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  background-position: right;
+}
+.top-details .error-styling {
+  display: flex;
+  padding: 0rem 0.5rem;
+  align-items: flex-start;
+  gap: 0.25rem;
+  border-radius: 0.25rem;
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--System-Error, #EF4444);
+}
