@@ -1,29 +1,64 @@
 ﻿@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
 html, body {
-  background-color: var(--background-color);
-  color: var(--text-color);
+  background-color: var(--color-gray-900);
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 16px;
 }
 
 :root {
-  --background-color: #ffffff;
-  --text-color: #0B0F19;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-gray: #EFF2FC;
+  --color-theme: #6366F1;
+  --color-danger: #F5D7DA;
+  --color-danger-dark: #e57e88;
+  --color-success: #bcf7d2;
+  --color-warning: #ffe8ad;
+  --color-info: #cfdefd;
+  --color-gray-000: #FFFFFF;
+  --color-gray-100: #F3F6FF;
+  --color-gray-200: #EFF2FC;
+  --color-gray-300: #E2E5F1;
+  --color-gray-400: #D4D7E5;
+  --color-gray-500: #B4B7C9;
+  --color-gray-600: #9397AD;
+  --color-gray-700: #565973;
+  --color-gray-800: #33354D;
+  --color-gray-900: #0B0F19;
+  --font-standard: "Manrope", sans-serif;
 }
 
 [data-theme=dark] {
-  --background-color: #0B0F19;
-  --text-color: #ffffff;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-gray: #EFF2FC;
+  --color-theme: #6366F1;
+  --color-danger: #F5D7DA;
+  --color-danger-dark: #e57e88;
+  --color-success: #bcf7d2;
+  --color-warning: #ffe8ad;
+  --color-info: #cfdefd;
+  --color-gray-000: #0B0F19;
+  --color-gray-100: #33354D;
+  --color-gray-200: #565973;
+  --color-gray-300: #9397AD;
+  --color-gray-400: #B4B7C9;
+  --color-gray-500: #D4D7E5;
+  --color-gray-600: #E2E5F1;
+  --color-gray-700: #EFF2FC;
+  --color-gray-800: #F3F6FF;
+  --color-gray-900: #FFFFFF;
+  --font-standard: "Manrope", sans-serif;
 }
 
 .text-xs {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 12px !important;
 }
@@ -31,7 +66,7 @@ html, body {
 .text-s {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
 }
@@ -39,7 +74,7 @@ html, body {
 .text-m {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 16px !important;
 }
@@ -47,7 +82,7 @@ html, body {
 .text-lg {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 18px !important;
 }
@@ -55,7 +90,7 @@ html, body {
 .text-xl {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 20px !important;
 }
@@ -63,7 +98,7 @@ html, body {
 .text-lead {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 24px !important;
 }
@@ -71,120 +106,120 @@ html, body {
 .d1 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 80px !important;
 }
 
 .d2 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 72px !important;
 }
 
 .d3 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 64px !important;
 }
 
 .d4 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 56px !important;
 }
 
 .d5 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 48px !important;
 }
 
 .d6 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 42px !important;
 }
 
 h1, .h1 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 40px !important;
 }
 
 h2, .h2 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 32px !important;
 }
 
 h3, .h3 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 28px !important;
 }
 
 h4, .h4 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 24px !important;
 }
 
 h5, .h5 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 20px !important;
 }
 
 h6, .h6 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 16px !important;
 }
 
@@ -204,7 +239,7 @@ h6, .h6 {
 a {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   color: #6467f2;
   text-decoration: none;
@@ -217,7 +252,7 @@ a:hover {
 .menu-link {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 16px;
   color: #33354D;
@@ -303,7 +338,7 @@ a:hover {
 .btn-switch label {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 16px;
   color: #33354D;
@@ -360,7 +395,7 @@ a:hover {
 .btn-social {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 20px !important;
   display: flex;
@@ -562,7 +597,7 @@ header .container li {
 .top-management h1 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 18px !important;
   font-weight: 600;
@@ -571,7 +606,7 @@ header .container li {
 .top-management p {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
   text-align: center;
@@ -580,7 +615,7 @@ header .container li {
   margin-top: 20px;
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
   font-weight: 500;
@@ -635,10 +670,10 @@ header .container li {
     margin-top: 10rem;
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
+    color: var(--color-gray-700);
     font-family: "Manrope", sans-serif;
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 40px !important;
     text-align: left;
     width: 32.875rem;
@@ -661,10 +696,10 @@ header .container li {
     text-align: left;
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
+    color: var(--color-gray-700);
     font-family: "Manrope", sans-serif;
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 20px !important;
   }
   .top-management .management-left .center {
@@ -692,7 +727,7 @@ header .container li {
   justify-content: center;
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 18px !important;
   font-weight: 600;
@@ -701,22 +736,22 @@ header .container li {
   .top-tools .tools-header .tool-header-text {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
+    color: var(--color-gray-700);
     font-family: "Manrope", sans-serif;
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 40px !important;
   }
 }
 .top-tools .tools-header p {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 16px !important;
 }
@@ -746,14 +781,14 @@ header .container li {
 .top-tools .tools-body a h4 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 18px !important;
 }
 .top-tools .tools-body a p {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
 }
@@ -784,7 +819,7 @@ header .container li {
   height: 100%;
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 24px !important;
   font-weight: 800;
@@ -804,7 +839,7 @@ header .container li {
   text-align: center;
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 24px !important;
   font-weight: 800;
@@ -846,11 +881,11 @@ header .container li {
   margin-bottom: 0.5rem;
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 16px !important;
 }
@@ -884,7 +919,7 @@ header .container li {
 .top-downloads .store-texts p {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
 }
 @media (min-width: 1200px) {
@@ -897,7 +932,7 @@ header .container li {
 .top-downloads .store-texts h6 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
 }
 .top-downloads .store-texts .google-store {
@@ -907,16 +942,16 @@ header .container li {
 .top-downloads h1 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 20px !important;
   margin-top: 1rem;
 }
@@ -924,10 +959,10 @@ header .container li {
   .top-downloads h1 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
+    color: var(--color-gray-700);
     font-family: "Manrope", sans-serif;
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 32px !important;
   }
 }
@@ -944,14 +979,14 @@ header .container li {
   text-align: center;
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
 }
 .top-integrate .integrate-header P {
   margin-top: 0.5rem;
@@ -1019,7 +1054,7 @@ footer {
   padding: 50px 0 30px 0;
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 12px !important;
   color: #9397AD;
@@ -1028,7 +1063,7 @@ footer {
   footer {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
+    color: var(--color-gray-700);
     font-family: "Manrope", sans-serif;
     font-size: 14px !important;
   }
@@ -1137,10 +1172,10 @@ footer .container .social-media {
   font-feature-settings: "clig" off, "liga" off;
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 16px !important;
 }
 @media (min-width: 1200px) {
@@ -1254,20 +1289,20 @@ footer .container .social-media {
 .cards .card h2 {
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 16px !important;
 }
 @media (min-width: 1200px) {
   .cards .card h2 {
     line-height: 160%;
     font-weight: 400;
-    color: #565973;
+    color: var(--color-gray-700);
     font-family: "Manrope", sans-serif;
     font-weight: 800;
-    color: #0B0F19;
+    color: var(--color-gray-900);
     font-size: 20px !important;
   }
 }
@@ -1318,10 +1353,10 @@ footer .container .social-media {
   font-feature-settings: "clig" off, "liga" off;
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 28px !important;
 }
 @media (min-width: 992px) {
@@ -1483,10 +1518,10 @@ footer .container .social-media {
   font-feature-settings: "clig" off, "liga" off;
   line-height: 160%;
   font-weight: 400;
-  color: #565973;
+  color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  color: #0B0F19;
+  color: var(--color-gray-900);
   font-size: 28px !important;
 }
 @media (min-width: 992px) {
@@ -1808,4 +1843,53 @@ footer .container .social-media {
 }
 .top-details .top-form #city {
   margin-bottom: 1rem;
+}
+.top-details .error {
+  color: var(--System-Error, #EF4444);
+  /* Body/XS */
+  font-family: Manrope;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%; /* 1.2rem */
+}
+.top-details .error input {
+  border-color: #EF4444;
+  background-image: url(../../../Images/Icons/bx-red-x.svg);
+  display: inline-block;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  background-position: right;
+}
+.top-details .input-control {
+  display: flex;
+  flex-direction: column;
+  height: 4rem;
+  margin-bottom: 1rem;
+}
+.top-details .success {
+  color: var(--System-Success, #22C55E);
+  /* Body/XS */
+  font-family: Manrope;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%; /* 1.2rem */
+}
+.top-details .success input {
+  border-color: #22C55E;
+  background-image: url(../../../Images/Icons/bx-green-checkmark.svg);
+  display: inline-block;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  background-position: right;
+}
+.top-details .error-styling {
+  display: flex;
+  padding: 0rem 0.5rem;
+  align-items: flex-start;
+  gap: 0.25rem;
+  border-radius: 0.25rem;
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--System-Error, #EF4444);
 }

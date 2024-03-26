@@ -74,22 +74,42 @@ function clickAndSelect() {
 document.addEventListener('DOMContentLoaded', function () {
     const signInForm = document.querySelector('.signin-form');
     const signUpForm = document.querySelector('.signup-form');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const firstName = document.getElementById('firstname');
+    const lastName = document.getElementById('lastname');
+    const confPassword = document.getElementById('conf-password');
 
     if (signInForm) {
-        signInForm.addEventListener('submit', (e) => {
-            if (!signInValidation()) {
-                e.preventDefault();
-            }
-        });
+        email.addEventListener('input', signInValidation);
+        password.addEventListener('input', signInValidation);
     }
 
     if (signUpForm) {
-        signUpForm.addEventListener('submit', (e) => {
-            if (!signUpValidation()) {
-                e.preventDefault();
-            }
-        });     
+        firstName.addEventListener('input', signUpValidation);
+        lastName.addEventListener('input', signUpValidation);
+        email.addEventListener('input', signUpValidation);
+        password.addEventListener('input', signUpValidation);
+        confPassword.addEventListener('input', signUpValidation);
     }
+
+    //if (signInForm) {
+    //    signInForm.addEventListener('submit', (e) => {
+    //        if (!signInValidation()) {
+    //            e.preventDefault();
+    //        }
+    //    });
+    //}
+
+    //if (signUpForm) {
+    //    signUpForm.addEventListener('submit', (e) => {
+    //        if (!signUpValidation()) {
+    //            e.preventDefault();
+    //        }
+    //    });
+    //}
+
+
 });
 
 function signInValidation() {
@@ -244,7 +264,7 @@ function signUpValidation() {
 /*Darkmode toggle*/
 
 document.addEventListener('DOMContentLoaded', () => {
-    const switcher = document.getElementById('theme-switcher');
+    const switcher = document.getElementById('switch-mode');
 
     // Apply the theme on initial load
     if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
