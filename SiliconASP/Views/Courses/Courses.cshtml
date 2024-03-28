@@ -1,0 +1,224 @@
+﻿@model CoursesViewModel
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<section class="top-courses">
+    <div class="courses-header">
+
+        <div class="courses-left"><h1>Courses</h1></div>
+
+
+        <div class="courses-right">
+            @using (Html.BeginForm("Search", "Home", FormMethod.Get))
+            {
+                <select class="select-course" name="categories">
+                    <option value="all-categories">All Categories</option>
+                    @foreach (var category in Model.Search.Categories)
+                    {
+                        <option value="@category.Name" selected="@category.SelectedCategory">@category.Name</option>
+                    }
+                </select>
+
+                <input type="search" name="cssearch" id="csserch" placeholder="Search Courses">
+                <button type="submit" class="btn-theme">Search</button>
+            }
+        </div>
+
+    </div>
+    <div class="courses-grid">
+        <div class="cards">
+
+            @foreach (var card in Model.CoursesCards)
+            {
+                <div class="card">
+                    <img src="@card.Image.ImageURL" alt="@card.Image.AltText" class="card-img-top">
+                    <img src="@card.Icon.ImageURL" alt="@card.Icon.AltText" class="best-seller">
+                    <img src="@card.Bookmark.ImageURL" alt="@card.Bookmark.AltText" class="bookmark">
+                    <div class="card-body">
+                        <h2 class="card-title">@card.CardTitle</h2>
+                        <p class="author">
+                            @card.CardAuthor
+                        </p>
+                        <p class="price">
+                            @card.CardPrice
+                        </p>
+                        <p class="time-and-likes">
+                            <img src="Images\Icons\bx-time-five.svg" alt="">@card.TimeAndLikes.Time <img src="Images\Icons\bx-like.png" alt=""> @card.TimeAndLikes.Likes
+                        </p>
+                    </div>               
+                </div>
+            }
+
+            <div class="card">
+                <img src="https://picsum.photos/200/100" alt="..." class="card-img-top">
+                <img src="Images\Icons\badge.svg" alt="" class="best-seller">
+                <img src="Images\Icons\bookmark-icon.svg" alt="" class="bookmark">
+                <div class="card-body">
+                    <h2 class="card-title">Fullstack Web Developer Course from Scratch</h2>
+                    <p class="author">
+                        By Robert Fox
+                    </p>
+                    <p class="price">
+                        $12.50
+                    </p>
+                    <p class="time-and-likes">
+                        <img src="Images\Icons\bx-time-five.svg" alt="">220 hours <img src="Images\Icons\bx-like.png" alt=""> 94% (4.2K)
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://picsum.photos/200/100" alt="..." class="card-img-top">
+                <img src="Images\Icons\badge.svg" alt="" class="best-seller">
+                <img src="Images\Icons\bookmark-icon.svg" alt="" class="bookmark">
+                <div class="card-body">
+                    <h2 class="card-title">HTML, CSS, JavaScript<br> Web Developer</h2>
+                    <p class="author">
+                        By Jenny Wilson & Marvin McKinney
+                    </p>
+                    <p class="price">
+                        $15.99
+                    </p>
+                    <p class="time-and-likes">
+                        <img src="Images\Icons\bx-time-five.svg" alt="">160 hours <img src="Images\Icons\bx-like.png" alt=""> 92% (3.1K)
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://picsum.photos/200/100" alt="..." class="card-img-top">
+                <img src="Images\Icons\bookmark-icon.svg" alt="" class="bookmark">
+                <div class="card-body">
+                    <h2 class="card-title">The Complete Front-End Web Development Course</h2>
+                    <p class="author">
+                        By Albert Flores
+                    </p>
+                    <p class="price">
+                        $44.99
+                    </p>
+                    <p class="time-and-likes">
+                        <img src="Images\Icons\bx-time-five.svg" alt="">100 hours <img src="Images\Icons\bx-like.png" alt=""> 98% (2.7K)
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://picsum.photos/200/100" alt="..." class="card-img-top">
+                <img src="Images\Icons\badge.svg" alt="" class="best-seller">
+                <img src="Images\Icons\bookmark-icon.svg" alt="" class="bookmark">
+                <div class="card-body">
+                    <h2 class="card-title">iOS & Swift - The Complete iOS App Development Course</h2>
+                    <p class="author">
+                        By Marvin McKinney
+                    </p>
+                    <p class="price">
+                        $15.99
+                    </p>
+                    <p class="time-and-likes">
+                        <img src="Images\Icons\bx-time-five.svg" alt="">160 hours <img src="Images\Icons\bx-like.png" alt=""> 92% (3.1K)
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://picsum.photos/200/100" alt="..." class="card-img-top">
+                <img src="Images\Icons\bookmark-icon.svg" alt="" class="bookmark">
+                <div class="card-body">
+                    <h2 class="card-title">Data Science & Machine Learning with Python</h2>
+                    <p class="author">
+                        By Esther Howard
+                    </p>
+                    <p class="price">
+                        $11.20
+                    </p>
+                    <p class="time-and-likes">
+                        <img src="Images\Icons\bx-time-five.svg" alt="">220 hours <img src="Images\Icons\bx-like.png" alt=""> 94% (4.2K)
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://picsum.photos/200/100" alt="..." class="card-img-top">
+                <img src="Images\Icons\badge.svg" alt="" class="best-seller">
+                <img src="Images\Icons\bookmark-icon.svg" alt="" class="bookmark">
+                <div class="card-body">
+                    <h2 class="card-title">Creative CSS Drawing Course: Make Art With CSS</h2>
+                    <p class="author">
+                        By Robert Fox
+                    </p>
+                    <p class="price">
+                        $10.50
+                    </p>
+                    <p class="time-and-likes">
+                        <img src="Images\Icons\bx-time-five.svg" alt="">220 hours <img src="Images\Icons\bx-like.png" alt=""> 94% (4.2K)
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://picsum.photos/200/100" alt="..." class="card-img-top">
+                <img src="Images\Icons\bookmark-icon.svg" alt="" class="bookmark">
+                <div class="card-body">
+                    <h2 class="card-title">Blender Character Creator v2.0 for Video Games Design</h2>
+                    <p class="author">
+                        By Ralph Edwards
+                    </p>
+                    <p class="price">
+                        $18.99
+                    </p>
+                    <p class="time-and-likes">
+                        <img src="Images\Icons\bx-time-five.svg" alt="">220 hours <img src="Images\Icons\bx-like.png" alt=""> 94% (4.2K)
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://picsum.photos/200/100" alt="..." class="card-img-top">
+                <img src="Images\Icons\badge.svg" alt="" class="best-seller">
+                <img src="Images\Icons\bookmark-icon.svg" alt="" class="bookmark">
+                <div class="card-body">
+                    <h2 class="card-title">The Ultimate Guide to 2D Mobile Game Development with Unity</h2>
+                    <p class="author">
+                        By Albert Flores
+                    </p>
+                    <p class="price">
+                        $44.99
+                    </p>
+                    <p class="time-and-likes">
+                        <img src="Images\Icons\bx-time-five.svg" alt="">220 hours <img src="Images\Icons\bx-like.png" alt=""> 94% (4.2K)
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://picsum.photos/200/100" alt="..." class="card-img-top">
+                <img src="Images\Icons\bookmark-icon.svg" alt="" class="bookmark">
+                <div class="card-body">
+                    <h2 class="card-title">Learn JMETER from Scratch on Live Apps-Performance Testing</h2>
+                    <p class="author">
+                        By Jenny Wilson
+                    </p>
+                    <p class="price">
+                        $14.50
+                    </p>
+                    <p class="time-and-likes">
+                        <img src="Images\Icons\bx-time-five.svg" alt="">220 hours <img src="Images\Icons\bx-like.png" alt=""> 94% (4.2K)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="top-banner">
+    <div class="text-block">
+        <p class="sub-header">Ready to get started?</p>
+        <h1>Take Your <span class="skills">Skills</span> to the Next Level</h1>
+        <button class="btn-theme">Work with us</button>
+    </div>
+    <img src="Images\Icons\illustration-courses.svg" alt="" class="illustration-courses">
+
+
+</div>
