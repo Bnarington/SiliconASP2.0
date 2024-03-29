@@ -1,10 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using SiliconASP.ViewModels.Sections;
+using Infrastructure.Services;
 
 namespace SiliconASP.Controllers;
 
-public class AuthController : Controller
+public class AuthController(UserService userService) : Controller
 {
+
+    private readonly UserService _userService = userService;
+
+
+
     [Route("/signup")]
     public IActionResult SignUp()
     {
@@ -14,18 +21,21 @@ public class AuthController : Controller
 
     [HttpPost]
     [Route("/signup")]
-    public IActionResult SignUp(SignUpViewModel model)
+    public async  Task<IActionResult> SignUp(SignUpViewModel model)
     {
+
         if (!model.SignUpForm.TermsAndConditions)
         {
             ModelState.AddModelError("SignUpForm.TermsAndConditions", "You must agree to the Terms and Conditions.");
         }
-        
+ 
         if (!ModelState.IsValid)
         {
-            return View(model);
+            var result = await _userService.CreateUserAsync(model.SignUpForm);
+            if (result.StatusCode == Infrastructure.Models.StatusCode.OK)
+                return RedirectToAction("Signin", "Auth");
         }
-        return RedirectToAction("Auth", "Signin");
+        return View(model);
     }
 
     [Route("/signin")]
