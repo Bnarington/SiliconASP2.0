@@ -10,47 +10,44 @@
             <p class="signin-text">Already have an account? <a asp-controller="Auth" asp-action="SignIn">Sign in here.</a></p>
 
             <div class="input-control">
-                <label asp-for=SignUpForm.FirstName class="labels"></label>
-                <span asp-validation-for="SignUpForm.FirstName" class="error error-styling"></span>
-                <input asp-for="SignUpForm.FirstName" class="firstname" placeholder="First name" id="firstname">
-                <div></div>
+                <label asp-for=Form.FirstName class="labels"></label>
+                <span asp-validation-for="Form.FirstName" class="error error-styling"></span>
+                <input asp-for="Form.FirstName" class="firstname" placeholder="First name" id="firstname">
             </div>
 
             <div class="input-control">
-                <label asp-for="SignUpForm.LastName" class="labels"></label>
-                <span asp-validation-for="SignUpForm.LastName" class="error error-styling"> </span>
-                <input asp-for=SignUpForm.LastName class="lastname" placeholder="Surname" id="lastname">
-                <div></div>
+                <label asp-for="Form.LastName" class="labels"></label>
+                <span asp-validation-for="Form.LastName" class="error error-styling"> </span>
+                <input asp-for=Form.LastName class="lastname" placeholder="Surname" id="lastname">
             </div>
 
 
             <div class="input-control">
-                <label asp-for=SignUpForm.Email class="labels"></label>
-                <span asp-validation-for="SignUpForm.Email" class="error error-styling"></span>
-                <input asp-for=SignUpForm.Email class="email" placeholder="Enter your email adress." aria-label="Email" id="email">
-                <div></div>
+                <label asp-for=Form.Email class="labels"></label>
+                <span asp-validation-for="Form.Email" class="error error-styling"></span>
+                <input asp-for=Form.Email class="email" placeholder="Enter your email adress." aria-label="Email" id="email">
             </div>
 
             <div class="input-control">
-                <label asp-for=SignUpForm.Password class="labels"></label>
-                <span asp-validation-for="SignUpForm.Password" class="error error-styling"></span>
-                <input asp-for=SignUpForm.Password class="password" placeholder="*******" aria-label="Password" id="password">
-                <div></div>
+                <label asp-for=Form.Password class="labels"></label>
+                <span asp-validation-for="Form.Password" class="error error-styling"></span>
+                <input asp-for=Form.Password class="password" placeholder="*******" aria-label="Password" id="password">
             </div>
 
             <div class="input-control">
-                <label asp-for="SignUpForm.ConfirmPassword" class="labels"></label>
-                <span asp-validation-for="SignUpForm.ConfirmPassword" class="error error-styling"></span>
-                <input asp-for=SignUpForm.ConfirmPassword class="password" placeholder="*******" aria-label="Password" id="conf-password">
-                <div></div>
+                <label asp-for="Form.ConfirmPassword" class="labels"></label>
+                <span asp-validation-for="Form.ConfirmPassword" class="error error-styling"></span>
+                <input asp-for=Form.ConfirmPassword class="password" placeholder="*******" aria-label="Password" id="conf-password">
             </div>
 
             <div class="checkmark">
-                <input asp-for="SignUpForm.TermsAndConditions" type="checkbox" id="term-check" class="termscheck" title="Remember me">
+                <input asp-for="Form.TermsAndConditions" type="checkbox" id="term-check" class="termscheck" title="Remember me">
                 <label for="term-check" class="term-label">I agree to the <a asp-controller="About" asp-action="Terms">Terms</a> & <a asp-controller="About" asp-action="Conditions">Conditions</a>.</label>
-                <span asp-validation-for="SignUpForm.TermsAndConditions" class="error error-styling"></span>
-                <div></div>
+                <span asp-validation-for="Form.TermsAndConditions" class="error error-styling"></span>
             </div>
             <button type="submit" class="btn-theme-s" formmethod="post">@Model.Title</button>
         </form>
 </section>
+
+@await Html.PartialAsync("_ValidationScriptPartial")
+

@@ -22,16 +22,10 @@ public class AuthController(UserService userService) : Controller
     [HttpPost]
     [Route("/signup")]
     public async  Task<IActionResult> SignUp(SignUpViewModel model)
-    {
-
-        if (!model.SignUpForm.TermsAndConditions)
+    { 
+        if (ModelState.IsValid)
         {
-            ModelState.AddModelError("SignUpForm.TermsAndConditions", "You must agree to the Terms and Conditions.");
-        }
- 
-        if (!ModelState.IsValid)
-        {
-            var result = await _userService.CreateUserAsync(model.SignUpForm);
+            var result = await _userService.CreateUserAsync(model.Form);
             if (result.StatusCode == Infrastructure.Models.StatusCode.OK)
                 return RedirectToAction("Signin", "Auth");
         }
