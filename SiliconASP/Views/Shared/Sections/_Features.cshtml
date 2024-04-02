@@ -1,23 +1,28 @@
-﻿@model FeaturesViewModel
+﻿@inject FeatureService _featureService
+@{
+    var result = await _featureService.GetAllFeaturesAsync();
+    List<FeatureEntity> content = (List<FeatureEntity>)result.ContentResult!;
+    var feature = content.First();
+}
 
-<section id="@Model.Id" class="top-tools">
-    <div class="tools-header">
-        <h1 class="tool-header-text">@Model.Title</h1>
-        <p>@Model.TitleText</p>
-    </div>
+@if(content != null)
+{
+    <section id="Features" class="top-tools">
+        <div class="tools-header">
+            <h1 class="tool-header-text">@feature.Title</h1>
+            <p>@feature.Ingress</p>
+        </div>
 
-    <div class="tools-body">
-        @if (Model.FeatureCards != null)
-        {
-            foreach (var card in Model.FeatureCards)
+        <div class="tools-body">
+            @foreach (var card in feature.FeatureItems)
             {
-                <a href="@card.Link.ControllerName" class="link-card">
-                    <img src="@card.Image.ImageURL" alt="@card.Image.AltText">
+                <a href="" class="link-card">
+                    <img src="@card.ImageUrl" alt="@card.Title">
                     <h4>@card.Title</h4>
                     <p>@Html.Raw(card.Text)</p>
                 </a>
             }
-        }
-    </div>
+        </div>
+    </section>
+}
 
-</section>

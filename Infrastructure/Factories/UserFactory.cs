@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Entities;
+using Infrastructure.Helpers;
 using Infrastructure.Models;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -29,13 +30,17 @@ internal class UserFactory
         try
         {
             var date = DateTime.Now;
+            var (password, secuirtyKey) = PasswordHasher.GenerateSecurePw(model.Password);
+
+
             return new UserEntity
             {
                 Id = Guid.NewGuid().ToString(),
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email,
-                Password = model.Password,
+                Password = password,
+                SecurityKey = secuirtyKey, 
                 Created = date,
                 Modified = date
             };

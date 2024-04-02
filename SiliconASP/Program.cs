@@ -10,6 +10,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
 builder.Services.AddScoped<AddressRepo>();
 builder.Services.AddScoped<UserRepo>();
+builder.Services.AddScoped<FeautreRepo>();
+builder.Services.AddScoped<FeatureItemRepo>();
+builder.Services.AddScoped<FeatureService>();
 builder.Services.AddScoped<AddressService>();
 builder.Services.AddScoped<UserService>();
 

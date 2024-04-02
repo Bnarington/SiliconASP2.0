@@ -1,26 +1,35 @@
-﻿@model ShowcaseViewModel
+﻿@inject ShowcaseService _showcaseService
+@{
+    var result = await _showcaseService.GetAllShowcasesAsync();
+    List<ShowcaseEntity> content = (List<ShowcaseEntity>)result.ContentResult!;
+    var showcase = content.First();
+}
 
-<section id="@Model.Id" class="top-management">
-    <div class="management-left">
-        <h1>@Model.Title</h1>
-        <p>@Model.Text</p>
-        <div class="center-button">
-            <button class="btn-theme-s" asp-controller="@Model.Link.ControllerName" asp-action="@Model.Link.ActionName">@Model.Link.Text</button>
-        </div>
-        <h3>@Model.BrandText</h3>
-        <div class="center">
-            @if (Model.Brands != null)
-            {
-                foreach(var brand in Model.Brands)
+@if(content != null)
+{
+    <section id="Showcase" class="top-management">
+        <div class="management-left">
+            <h1>@showcase.Title</h1>
+            <p>@showcase.Text</p>
+            <div class="center-button">
+                <button class="btn-theme-s" asp-controller="Auth" asp-action="SignUp">Get started for free</button>
+            </div>
+            <h3>@Model.BrandText</h3>
+            <div class="center">
+                @if (Model.Brands != null)
                 {
-                    <img src="@brand.ImageURL" alt="@brand.AltText">
+                    foreach (var brand in Model.Brands)
+                    {
+                        <img src="@brand.ImageURL" alt="@brand.AltText">
+                    }
+
                 }
-
-            }
+            </div>
         </div>
-    </div>
 
-    <div class="management-right">
-        <img src="@Model.ShowcaseImage.ImageURL" alt="@Model.ShowcaseImage.AltText">
-    </div>
-</section>
+        <div class="management-right">
+            <img src="@Model.ShowcaseImage.ImageURL" alt="@Model.ShowcaseImage.AltText">
+        </div>
+    </section>
+}
+

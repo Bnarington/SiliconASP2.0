@@ -41,17 +41,15 @@ public class AuthController(UserService userService) : Controller
 
     [HttpPost]
     [Route("/signin")]
-    public IActionResult SignIn(SignInViewModel model)
+    public async Task<IActionResult> SignIn(SignInViewModel model)
     {
 
-        if (!ModelState.IsValid)
+        if (ModelState.IsValid)
         {
-            return View(model);
+            var result = await _userService.SignInUserAsync(model.Form);
+            if (result.StatusCode == Infrastructure.Models.StatusCode.OK)
+                return RedirectToAction("Details", "Account");
         }
-
-        //var result = _authService.SignIn(model.Form)
-        //if (result)
-        //    return RedirectToAction("Auth", "SignIn");
 
         model.ErrorMessage = "Invalid Email or Password";
         return View(model);

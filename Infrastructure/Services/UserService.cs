@@ -1,4 +1,6 @@
-﻿using Infrastructure.Factories;
+﻿using Infrastructure.Entities;
+using Infrastructure.Factories;
+using Infrastructure.Helpers;
 using Infrastructure.Models;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
@@ -27,5 +29,23 @@ public class UserService(UserRepo repository, AddressService addressService)
             return ResponseFactory.OK("User Created Successfully.");
         }
         catch (Exception ex) { return ResponseFactory.Error(ex.Message);  }
+    }
+
+    public async Task<ResponseResult> SignInUserAsync(SignInModel model)
+    {
+        try
+        {
+            var result = await _repository.GetOneAsync(x => x.Email == model.Email);
+            if (result.StatusCode == StatusCode.OK && result.ContentResult != null)
+            {
+                var userEntity = (UserEntity)result.ContentResult;
+
+                if (PasswordHasher.ValidateSecurePassword(model.Password, userEntity.Password, userEntity.SecurityKey))
+                    return ResponseFactory.OK();
+            }
+
+            return ResponseFactory.Error("Incorrect email or password.");
+        }
+        catch (Exception ex) { return ResponseFactory.Error(ex.Message); }
     }
 }
