@@ -12,7 +12,4 @@ public class DataContext(DbContextOptions<DataContext> options) : DbContext(opti
     public DbSet<FeatureEntity> Features { get; set; }
 
     public DbSet<FeatureItemEntity> FeatureItems { get; set; }
-
-    public DbSet<ShowcaseEntity> Showcases { get; set; }
-    public DbSet<BrandItemEntity> BrandItems { get; set; }
 }
