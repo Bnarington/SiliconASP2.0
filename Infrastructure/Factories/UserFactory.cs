@@ -1,36 +1,17 @@
 ﻿using Infrastructure.Entities;
 using Infrastructure.Helpers;
 using Infrastructure.Models;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Infrastructure.Factories;
 
 internal class UserFactory
 {
-        public static UserEntity Create()
-    {
-        try
-        {
-            var date = DateTime.Now;
-            return new UserEntity() 
-            { 
-                Id = Guid.NewGuid().ToString(),
-                Created = date,
-                Modified = date
-            
-            
-            };
-        }
-        catch { }
-        return null!;
-    }
-
     public static UserEntity Create(SignUpModel model)
     {
         try
         {
             var date = DateTime.Now;
-            var (password, secuirtyKey) = PasswordHasher.GenerateSecurePw(model.Password);
+            var (password, securityKey) = PwHasher.GenerateSecurePw(model.Password);
 
 
             return new UserEntity
@@ -40,7 +21,7 @@ internal class UserFactory
                 LastName = model.LastName,
                 Email = model.Email,
                 Password = password,
-                SecurityKey = secuirtyKey, 
+                SecurityKey = securityKey, 
                 Created = date,
                 Modified = date
             };

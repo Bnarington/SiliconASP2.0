@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SiliconASP.ViewModels.Sections;
 
 namespace SiliconASP.Controllers;
 
 public class AccountController : Controller
 {
+
+    [Authorize]
     [Route("/account")]
     public IActionResult Details()
     {

@@ -8,10 +8,10 @@
     <div class="sidebar">
         <img src="@Model.BasicInfo.ProfileImage" alt="" class="acc-pic">
         <button class="btn-refresh"></button>
-        <h4>@Model.BasicInfo.FirstName @Model.BasicInfo.LastName</h4>
+        <h4>@User.Identity.Name</h4>
         <p class="email">@Model.BasicInfo.Email</p>
-        <button class="btn-theme-s"><img src="Images\Icons\bx-cog.svg" alt=""> Account Details</button>
-        <button class="btn-gray"><img src="Images\Icons\bx-log-out.svg" alt="">Sign Out</button>
+        <a class="btn-theme-s" asp-action="Details" asp-controller="Account"><img src="Images\Icons\bx-cog.svg" alt=""> Account Details</a>
+        <a class="btn-gray" asp-action="SignOut" asp-controller="Auth"><img src="Images\Icons\bx-log-out.svg" alt="">Sign Out</a>
     </div>
 
 

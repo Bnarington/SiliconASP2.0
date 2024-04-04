@@ -40,12 +40,30 @@ public class UserService(UserRepo repository, AddressService addressService)
             {
                 var userEntity = (UserEntity)result.ContentResult;
 
-                if (PasswordHasher.ValidateSecurePassword(model.Password, userEntity.Password, userEntity.SecurityKey))
-                    return ResponseFactory.OK();
+                if (PwHasher.ValidateSecurePassword(model.Password, userEntity.Password, userEntity.SecurityKey))
+                    return ResponseFactory.OK(userEntity);
             }
 
             return ResponseFactory.Error("Incorrect email or password.");
         }
         catch (Exception ex) { return ResponseFactory.Error(ex.Message); }
+    }
+}
+
+
+public class SignInResult
+{
+    public bool IsSuccess { get; set; }
+    public string? ErrorMessage { get; set; }
+    public UserEntity? UserEntity { get; set; }
+
+    public static SignInResult Success(UserEntity userEntity)
+    {
+        return new SignInResult { IsSuccess = true, UserEntity = userEntity };
+    }
+
+    public static SignInResult Error(string message)
+    {
+        return new SignInResult { IsSuccess = false, ErrorMessage = message };
     }
 }
