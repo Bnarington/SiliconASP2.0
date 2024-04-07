@@ -21,15 +21,13 @@ internal class PwHasher
     }
 
 
-    public static bool ValidateSecurePassword(string password, string hashedPw, string securityKey)
+    public static bool ValidateSecurePassword(string password, string securityKey, string hashedPw)
     {
         try
         {
             using var hmac = new HMACSHA512(Convert.FromBase64String(securityKey));
             var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
-            Console.WriteLine($"Computed Hash length: {computedHash.Length} bytes");
             var hash = Convert.FromBase64String(hashedPw);
-            Console.WriteLine($"Hash length: {hash.Length} bytes");
 
             for (int i = 0; i < computedHash.Length; i++)
             {

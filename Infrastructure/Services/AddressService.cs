@@ -4,56 +4,55 @@ using Infrastructure.Models;
 using Infrastructure.Repositories;
 
 namespace Infrastructure.Services;
-public class AddressService(AddressRepo repostiroy)
+public class AddressService(AddressRepo repository)
 {
-    private readonly AddressRepo _repostiroy = repostiroy;
+    private readonly AddressRepo _repository = repository;
 
-    public async Task<ResponseResult> GetorCreateAddressAync(string streetName, string postalCode, string city)
+    public async Task<ResponseResult> GetOrCreateAddressAsync(string streetName, string postalCode, string city)
     {
         try
         {
-            var result = await GetAddressAync(streetName, postalCode, city);
-            if (result.StatusCode == StatusCode.NOT_FOUND) 
-                result = await CreateAddressAync(streetName, postalCode, city);
-
-            return result;
-
-        }
-        catch (Exception ex) { return ResponseFactory.Error(ex.Message); }
-    }
-
-
-    public async Task<ResponseResult> CreateAddressAync(string streetName, string postalCode, string city)
-    {
-        try
-        {
-            var exists = await _repostiroy.EntityAllreadyExistsAsync(x => x.StreetName == streetName && x.PostalCode == postalCode && x.City == city);
-            if (exists == null)
+            var result = await GetAddressAsync(streetName, postalCode, city);
+            if (result.MyStatusCode == MyStatusCode.NOT_FOUND)
             {
-                var result = await _repostiroy.CreateOneAsync(AddressFactory.Create(streetName, postalCode, city));
-                if (result.StatusCode == StatusCode.OK)
-                    return ResponseFactory.OK(AddressFactory.Create((AddressEntity)result.ContentResult!));
-
-                return result;
+                result = await CreateAddressAsync(streetName, postalCode, city);
             }
-            return exists;
+            return result;
         }
-        catch (Exception ex) { return ResponseFactory.Error(ex.Message); }
-
-
+        catch (Exception ex)
+        {
+            return ResponseFactory.Error(ex.Message);
+        }
     }
 
-    public async Task<ResponseResult> GetAddressAync(string streetName, string postalCode, string city)
+    public async Task<ResponseResult> CreateAddressAsync(string streetName, string postalCode, string city)
     {
         try
         {
-            var result = await _repostiroy.GetOneAsync(x => x.StreetName == streetName && x.PostalCode == postalCode && x.City == city);
-            return result;
+            var existingAddress = await _repository.EntityAlreadyExistsAsync(x => x.StreetName == streetName && x.PostalCode == postalCode && x.City == city);
+            if (existingAddress.MyStatusCode == MyStatusCode.NOT_FOUND)
+            {
+                var newAddress = AddressFactory.Create(streetName, postalCode, city);
+                var result = await _repository.CreateOneAsync(newAddress);
+                return result.MyStatusCode == MyStatusCode.OK ? ResponseFactory.OK(newAddress) : result;
+            }
+            return ResponseFactory.OK(existingAddress);
         }
-        catch (Exception ex) { return ResponseFactory.Error(ex.Message); }
-
-
+        catch (Exception ex)
+        {
+            return ResponseFactory.Error(ex.Message);
+        }
     }
 
+    public async Task<ResponseResult> GetAddressAsync(string streetName, string postalCode, string city)
+    {
+        try
+        {
+            return await _repository.GetOneAsync(x => x.StreetName == streetName && x.PostalCode == postalCode && x.City == city);
+        }
+        catch (Exception ex)
+        {
+            return ResponseFactory.Error(ex.Message);
+        }
+    }
 }
-

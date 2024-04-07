@@ -1,4 +1,6 @@
-﻿<header>
+﻿@inject SignInManager<UserEntity> _signInManager
+
+<header>
     <div class="container">
         <img id="logo" src="~/Images/Silicon Logotype - Light Mode.svg" alt="Logo of the site, it shows the periodic table number for silicon with the words silicon next to it.">
         <button class="mobile-nav-toggle" aria-controls="primary-nav" aria-expanded="false"><span class="sr-only">Menu</span></button>
@@ -34,13 +36,20 @@
         </nav>
 
         <div class="account-flex hidewhensmall">
-            <div class="account-buttons">
-                <a asp-controller="Auth" asp-action="SignIn" class="btn-gray"><i class="fa-solid fa-right-to-bracket"></i>Sign in</a>
-            </div>
-
-            <div class="account-buttons">
-                <a asp-controller="Auth" asp-action="SignUp" class="btn-theme"><i class="fa-solid fa-user"></i>Sign up</a>
-            </div>
+            @if (_signInManager.IsSignedIn(User))
+            {
+                <div class="account-buttons">
+                    <a asp-controller="Auth" asp-action="SignOut" class="btn-gray"><i class="fa-solid fa-right-to-bracket"></i>Sign out</a>
+                    <a asp-controller="Account" asp-action="Details" class="btn-theme"><i class="fa-solid fa-right-to-bracket"></i>My account</a>
+                </div>
+            } 
+            else
+            {
+                <div class="account-buttons">
+                    <a asp-controller="Auth" asp-action="SignIn" class="btn-gray"><i class="fa-solid fa-left-to-bracket"></i>Sign in</a>
+                    <a asp-controller="Auth" asp-action="SignUp" class="btn-theme"><i class="fa-solid fa-user"></i>Sign up</a>
+                </div>
+            }
         </div>
 
     </div>

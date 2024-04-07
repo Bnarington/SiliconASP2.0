@@ -1,4 +1,4 @@
-﻿using SiliconASP.Models;
+﻿using Infrastructure.Models;
 using System.ComponentModel;
 
 namespace SiliconASP.ViewModels.Sections.Components;

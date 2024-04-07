@@ -5,48 +5,59 @@
 }
 
 <section id="signup" class="top-title">
-        <form method="post" asp-controller="Auth" asp-action="SignUp" class="signup-form">
-            <h1>Create account</h1>
-            <p class="signin-text">Already have an account? <a asp-controller="Auth" asp-action="SignIn">Sign in here.</a></p>
 
-            <div class="input-control">
-                <label asp-for=Form.FirstName class="labels"></label>
-                <span asp-validation-for="Form.FirstName" class="error error-styling"></span>
-                <input asp-for="Form.FirstName" class="firstname" placeholder="First name" id="firstname">
-            </div>
-
-            <div class="input-control">
-                <label asp-for="Form.LastName" class="labels"></label>
-                <span asp-validation-for="Form.LastName" class="error error-styling"> </span>
-                <input asp-for=Form.LastName class="lastname" placeholder="Surname" id="lastname">
-            </div>
+    @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"]?.ToString()))
+    {
+        <div class="error error-styling">
+            @ViewData["ErrorMessage"]
+        </div>
+    }
 
 
-            <div class="input-control">
-                <label asp-for=Form.Email class="labels"></label>
-                <span asp-validation-for="Form.Email" class="error error-styling"></span>
-                <input asp-for=Form.Email class="email" placeholder="Enter your email adress." aria-label="Email" id="email">
-            </div>
+    <form method="post" asp-controller="Auth" asp-action="SignUp" class="signup-form">
+        <h1>Create account</h1>
+        <p class="signin-text">Already have an account? <a asp-controller="Auth" asp-action="SignIn">Sign in here.</a></p>
 
-            <div class="input-control">
-                <label asp-for=Form.Password class="labels"></label>
-                <span asp-validation-for="Form.Password" class="error error-styling"></span>
-                <input asp-for=Form.Password class="password" placeholder="*******" aria-label="Password" id="password">
-            </div>
 
-            <div class="input-control">
-                <label asp-for="Form.ConfirmPassword" class="labels"></label>
-                <span asp-validation-for="Form.ConfirmPassword" class="error error-styling"></span>
-                <input asp-for=Form.ConfirmPassword class="password" placeholder="*******" aria-label="Password" id="conf-password">
-            </div>
 
-            <div class="checkmark">
-                <input asp-for="Form.TermsAndConditions" type="checkbox" id="term-check" class="termscheck" title="Remember me">
-                <label for="term-check" class="term-label">I agree to the <a asp-controller="About" asp-action="Terms">Terms</a> & <a asp-controller="About" asp-action="Conditions">Conditions</a>.</label>
-                <span asp-validation-for="Form.TermsAndConditions" class="error error-styling"></span>
-            </div>
-            <button type="submit" class="btn-theme-s" formmethod="post">@Model.Title</button>
-        </form>
+        <div class="input-control">
+            <label asp-for=Form.FirstName class="labels"></label>
+            <input asp-for="Form.FirstName" class="firstname" placeholder="First name" id="firstname">
+            <span asp-validation-for="Form.FirstName" class="error error-styling"></span>
+        </div>
+
+        <div class="input-control">
+            <label asp-for="Form.LastName" class="labels"></label>
+            <input asp-for=Form.LastName class="lastname" placeholder="Surname" id="lastname">
+            <span asp-validation-for="Form.LastName" class="error error-styling"> </span>
+        </div>
+
+
+        <div class="input-control">
+            <label asp-for=Form.Email class="labels"></label>
+            <input asp-for=Form.Email class="email" placeholder="Enter your email adress." aria-label="Email" id="email">
+            <span asp-validation-for="Form.Email" class="error error-styling"></span>
+        </div>
+
+        <div class="input-control">
+            <label asp-for=Form.Password class="labels"></label>
+            <input asp-for=Form.Password class="password" placeholder="*******" aria-label="Password" id="password">
+            <span asp-validation-for="Form.Password" class="error error-styling"></span>
+        </div>
+
+        <div class="input-control">
+            <label asp-for="Form.ConfirmPassword" class="labels"></label>
+            <input asp-for=Form.ConfirmPassword class="password" placeholder="*******" aria-label="Password" id="conf-password">
+            <span asp-validation-for="Form.ConfirmPassword" class="error error-styling"></span>
+        </div>
+
+        <div class="checkmark">
+            <input asp-for="Form.TermsAndConditions" type="checkbox" id="term-check" class="termscheck" title="Remember me">
+            <label for="term-check" class="term-label">I agree to the <a asp-controller="About" asp-action="Terms">Terms</a> & <a asp-controller="About" asp-action="Conditions">Conditions</a>.</label>
+            <span asp-validation-for="Form.TermsAndConditions" class="error error-styling"></span>
+        </div>
+        <button type="submit" class="btn-theme-s" formmethod="post">@Model.Title</button>
+    </form>
 </section>
 
 @await Html.PartialAsync("_ValidationScriptPartial")

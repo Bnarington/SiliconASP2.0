@@ -1,37 +1,34 @@
 ﻿@model SignInViewModel
 
 @{
-    ViewData["Title"] = Model.Title;
+    ViewData["Title"] = "Sign In";
 }
 
 <section id="signin" class="top-title">
     <form method="post" asp-controller="Auth" asp-action="SignIn" class="signin-form">
-        <div>
-            @Model.ErrorMessage
+        <div class="error error-styling">
+            @ViewData["ErrorMessage"]
         </div>
 
         <h1>Sign in</h1>
         <p class="signin-text">Dont have any account yet? <a asp-controller="Auth" asp-action="SignUp">Create one here.</a></p>
 
         <div class="input-control">
-            <label asp-for=Form.Email class="labels"></label>
-            <span asp-validation-for="Form.Email" class="error error-styling"></span>
+            <label asp-for="Form.Email" class="labels"></label>
             <input asp-for="Form.Email" class="email" id="email">
         </div>
 
         <div class="input-control">
             <label asp-for="Form.Password" class="labels"></label>
-            <span asp-validation-for="Form.Password" class="error error-styling"> </span>
             <input asp-for=Form.Password class="password" id="password">
         </div>
 
         <div class="checkmark">
             <input asp-for="Form.RememberMe" type="checkbox" id="term-check" class="termscheck" title="Remember me">
             <label for="term-check" class="term-label">Remember me next time.</label>
-            <span asp-validation-for="Form.RememberMe" class="error error-styling"></span>
         </div>
-        <button type="submit" class="btn-theme-s" formmethod="post">@Model.Title</button>
-        <a class="forgot-pass" asp-asp-controller="Account" asp-action="ForgotPw">Forgot your password?</a>
+        <button type="submit" class="btn-theme-s" formmethod="post">Login</button>
+        <a class="forgot-pass btn-gray" asp-controller="Account" asp-action="ForgotPw">Forgot your password?</a>
     </form>
 
 </section>

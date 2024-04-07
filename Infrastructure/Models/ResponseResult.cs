@@ -1,6 +1,6 @@
 ﻿namespace Infrastructure.Models;
 
-public enum StatusCode
+public enum MyStatusCode
 {
     OK = 200,
     ERROR = 400,
@@ -10,7 +10,7 @@ public enum StatusCode
 
 public class ResponseResult
 {
-    public StatusCode StatusCode { get; set; }
+    public MyStatusCode MyStatusCode { get; set; }
     public object? ContentResult { get; set; }
     public string? Message { get; set; }
 }

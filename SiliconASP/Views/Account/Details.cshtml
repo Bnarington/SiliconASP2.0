@@ -1,15 +1,15 @@
 ﻿@model AccountDetailsViewModel
 
 @{
-    ViewData["Title"] = $"Account details for {Model.BasicInfo.FirstName} {Model.BasicInfo.LastName}";
+    ViewData["Title"] = $"Account details for {Model.User.FirstName} {Model.User.LastName}";
 }
 
 <div class="top-details">
     <div class="sidebar">
-        <img src="@Model.BasicInfo.ProfileImage" alt="" class="acc-pic">
+        <img src="" alt="" class="acc-pic">
         <button class="btn-refresh"></button>
-        <h4>@User.Identity.Name</h4>
-        <p class="email">@Model.BasicInfo.Email</p>
+        <h4>@Model.User.FirstName @Model.User.LastName</h4>
+        <p class="email">@Model.User.Email</p>
         <a class="btn-theme-s" asp-action="Details" asp-controller="Account"><img src="Images\Icons\bx-cog.svg" alt=""> Account Details</a>
         <a class="btn-gray" asp-action="SignOut" asp-controller="Auth"><img src="Images\Icons\bx-log-out.svg" alt="">Sign Out</a>
     </div>
@@ -29,39 +29,39 @@
             <div class="names-float">
                 <div class="firstname-float">
                     <label asp-for=BasicInfo.FirstName class="labels"></label>
-                    <input asp-for="BasicInfo.FirstName" id="firstname">
-                    <span asp-validation-for="BasicInfo.FirstName" class="error error-styling"></span>
+                    <input asp-for="User.FirstName" id="firstname">
+                    <span asp-validation-for="User.FirstName" class="error error-styling"></span>
                 </div>
 
                 <div class="lastname-float">
                     <label asp-for=BasicInfo.LastName class="labels"></label>
-                    <input asp-for="BasicInfo.LastName" id="lastname">
-                    <span asp-validation-for="BasicInfo.LastName" class="error error-styling"></span>
+                    <input asp-for="User.LastName" id="lastname">
+                    <span asp-validation-for="User.LastName" class="error error-styling"></span>
                 </div>
             </div>
 
             <div class="email-phone-float">
                 <div class="email-float">
                     <label asp-for=BasicInfo.Email class="labels"></label>
-                    <input asp-for="BasicInfo.Email" id="email">
-                    <span asp-validation-for="BasicInfo.Email" class="error error-styling"></span>
+                    <input asp-for="User.Email" id="email">
+                    <span asp-validation-for="User.Email" class="error error-styling"></span>
                 </div>
 
                 <div class="phone-float">
                     <label asp-for=BasicInfo.Phone class="labels"></label>
-                    <input asp-for="BasicInfo.Phone" id="phone">
-                    <span asp-validation-for="BasicInfo.Phone" class="error error-styling"></span>
+                    <input asp-for="User.PhoneNumber" id="phone">
+                    <span asp-validation-for="User.PhoneNumber" class="error error-styling"></span>
                 </div>
             </div>
 
             <div class="bio-float">
                 <label asp-for="BasicInfo.Bio" class="labels"> <span class="optional">(optional)</span></label>
-                <textarea asp-for="BasicInfo.Bio" name="bio" id="bio" cols="30" rows="10" class="labels">Write a short bio here.</textarea>
+                <textarea asp-for="BasicInfo.Bio" name="bio" id="bio" cols="30" rows="10"></textarea>
             </div>
 
             <div class="buttons-float">
                 <button class="btn-gray">Cancel</button>
-                <button type="submit" class="btn-theme">Save Changes</button>
+                <button asp-controller="Account" asp-action="BasicInfo" type="submit" class="btn-theme">Save Changes</button>
             </div>
         </form>
 
@@ -70,33 +70,25 @@
 
             <div class="address-float">
                 <div class="address-1">
-                    <label asp-for=AdressInfo.AddressLine_1 class="labels"></label>
-                    <input asp-for="AdressInfo.AddressLine_1" id="address1" class="address-input">
-                    <span asp-validation-for="AdressInfo.AddressLine_1" class="error error-styling"></span>
-                </div>
-                <div class="address-2">
-                    <label asp-for=AdressInfo.AddressLine_2 class="labels"></label>
-                    <input asp-for="AdressInfo.AddressLine_2" id="address2" class="address-input">
-                    <span asp-validation-for="AdressInfo.AddressLine_2" class="error error-styling"></span>
+                    <label asp-for=AddressInfo.AddressLine_1 class="labels"></label>
+                    <input asp-for="Address.StreetName" id="address1" class="address-input">
                 </div>
             </div>
 
             <div class="post-city-float">
                 <div class="postcode-div">
-                    <label asp-for=AdressInfo.PostalCode class="labels"></label>
-                    <input asp-for="AdressInfo.PostalCode" id="postcode">
-                    <span asp-validation-for="AdressInfo.PostalCode" class="error error-styling"></span>
+                    <label asp-for=AddressInfo.PostalCode class="labels"></label>
+                    <input asp-for="Address.PostalCode" id="postcode">
                 </div>
                 <div class="city-div">
-                    <label asp-for=AdressInfo.City class="labels"></label>
-                    <input asp-for="AdressInfo.City" id="city">
-                    <span asp-validation-for="AdressInfo.City" class="error error-styling"></span>
+                    <label asp-for=AddressInfo.City class="labels"></label>
+                    <input asp-for="Address.City" id="city">
                 </div>
             </div>
 
             <div class="buttons-float">
                 <button class="btn-gray">Cancel</button>
-                <button class="btn-theme">Save Changes</button>
+                <button type="submit" class="btn-theme">Save Changes</button>
             </div>
         </form>
     </div>

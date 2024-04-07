@@ -9,28 +9,13 @@ internal class AddressFactory
     {
         try
         {
-            return new AddressEntity
+            var addressEntity = new AddressEntity
             {
                 StreetName = streetName,
                 PostalCode = postalCode,
                 City = city
             };
-        }
-        catch { }
-        return null!;
-    }
-
-    public static AddressModel Create(AddressEntity entity)
-    {
-        try
-        {
-            return new AddressModel
-            {
-                Id = entity.Id,
-                StreetName = entity.StreetName,
-                PostalCode = entity.PostalCode,
-                City = entity.City
-            };
+            return addressEntity;
         }
         catch { }
         return null!;

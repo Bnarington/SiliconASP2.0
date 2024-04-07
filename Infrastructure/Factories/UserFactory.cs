@@ -4,27 +4,20 @@ using Infrastructure.Models;
 
 namespace Infrastructure.Factories;
 
-internal class UserFactory
+public class UserFactory
 {
     public static UserEntity Create(SignUpModel model)
     {
         try
         {
-            var date = DateTime.Now;
-            var (password, securityKey) = PwHasher.GenerateSecurePw(model.Password);
-
-
-            return new UserEntity
+            var userEntity = new UserEntity
             {
-                Id = Guid.NewGuid().ToString(),
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email,
-                Password = password,
-                SecurityKey = securityKey, 
-                Created = date,
-                Modified = date
+                UserName = model.Email
             };
+            return userEntity;
         }
         catch { }
         return null!;

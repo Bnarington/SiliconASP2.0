@@ -95,7 +95,7 @@ public abstract class BaseRepo<TEntity>(DataContext context) where TEntity : cla
         }
     }
 
-    public virtual async Task<ResponseResult> EntityAllreadyExistsAsync(Expression<Func<TEntity, bool>> predicate)
+    public virtual async Task<ResponseResult> EntityAlreadyExistsAsync(Expression<Func<TEntity, bool>> predicate)
     {
         try
         {
