@@ -5,13 +5,14 @@ namespace Infrastructure.Factories;
 
 internal class AddressFactory
 {
-    public static AddressEntity Create(string streetName, string postalCode, string city)
+    public static AddressEntity Create(string streetName, string optionalStreet, string postalCode, string city)
     {
         try
         {
             var addressEntity = new AddressEntity
             {
                 StreetName = streetName,
+                OptionalStreet = optionalStreet,
                 PostalCode = postalCode,
                 City = city
             };

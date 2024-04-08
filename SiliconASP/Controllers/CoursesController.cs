@@ -1,12 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Infrastructure.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace SiliconASP.Controllers
 {
-    public class CoursesController : Controller
+
+    public class CoursesController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager) : Controller
     {
+
+        private readonly UserManager<UserEntity> _userManager = userManager;
+        private readonly SignInManager<UserEntity> _signInManager = signInManager;
+
         [Route("/Courses")]
         public IActionResult Courses()
         {
+            if (!_signInManager.IsSignedIn(User))
+                return RedirectToAction("SignIn", "Auth");
+
             return View();
         }
 

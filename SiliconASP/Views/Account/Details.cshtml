@@ -29,38 +29,39 @@
             <div class="names-float">
                 <div class="firstname-float">
                     <label asp-for=BasicInfo.FirstName class="labels"></label>
-                    <input asp-for="User.FirstName" id="firstname">
-                    <span asp-validation-for="User.FirstName" class="error error-styling"></span>
+                    <input asp-for="BasicInfo.FirstName" id="firstname">
+                    <span asp-validation-for="BasicInfo.FirstName" class="error error-styling"></span>
                 </div>
 
                 <div class="lastname-float">
                     <label asp-for=BasicInfo.LastName class="labels"></label>
-                    <input asp-for="User.LastName" id="lastname">
-                    <span asp-validation-for="User.LastName" class="error error-styling"></span>
+                    <input asp-for="BasicInfo.LastName" id="lastname">
+                    <span asp-validation-for="BasicInfo.LastName" class="error error-styling"></span>
                 </div>
             </div>
 
             <div class="email-phone-float">
                 <div class="email-float">
                     <label asp-for=BasicInfo.Email class="labels"></label>
-                    <input asp-for="User.Email" id="email">
-                    <span asp-validation-for="User.Email" class="error error-styling"></span>
+                    <input asp-for="BasicInfo.Email" id="email">
+                    <span asp-validation-for="BasicInfo.Email" class="error error-styling"></span>
                 </div>
 
                 <div class="phone-float">
                     <label asp-for=BasicInfo.Phone class="labels"></label>
-                    <input asp-for="User.PhoneNumber" id="phone">
-                    <span asp-validation-for="User.PhoneNumber" class="error error-styling"></span>
+                    <input asp-for="BasicInfo.Phone" id="phone">
+                    <span asp-validation-for=BasicInfo.Phone class="error error-styling"></span>
                 </div>
             </div>
 
             <div class="bio-float">
-                <label asp-for="BasicInfo.Bio" class="labels"> <span class="optional">(optional)</span></label>
-                <textarea asp-for="BasicInfo.Bio" name="bio" id="bio" cols="30" rows="10"></textarea>
+                <label asp-for=BasicInfo.Bio class="labels"></label>
+                <textarea asp-for=BasicInfo.Bio id="bio" cols="30" rows="10"></textarea>
+                <span asp-validation-for=BasicInfo.Bio class="error error-styling"></span>
             </div>
 
             <div class="buttons-float">
-                <button class="btn-gray">Cancel</button>
+                <button asp-controller="Account" asp-action="Details" class="btn-gray">Cancel</button>
                 <button asp-controller="Account" asp-action="BasicInfo" type="submit" class="btn-theme">Save Changes</button>
             </div>
         </form>
@@ -71,30 +72,36 @@
             <div class="address-float">
                 <div class="address-1">
                     <label asp-for=AddressInfo.AddressLine_1 class="labels"></label>
-                    <input asp-for="Address.StreetName" id="address1" class="address-input">
+                    <input asp-for="AddressInfo.AddressLine_1" id="address1" class="address-input" />
+                    <span asp-validation-for=AddressInfo.AddressLine_1 class="error error-styling"></span>
+                </div>
+                <div class="address-2">
+                    <label asp-for=AddressInfo.AddressLine_2 class="labels"></label>
+                    <input asp-for=AddressInfo.AddressLine_2 id="adress2" class="address-input" />
+                    <span asp-validation-for=AddressInfo.AddressLine_2 class="error error-styling"></span>
                 </div>
             </div>
 
             <div class="post-city-float">
                 <div class="postcode-div">
                     <label asp-for=AddressInfo.PostalCode class="labels"></label>
-                    <input asp-for="Address.PostalCode" id="postcode">
+                    <input asp-for="AddressInfo.PostalCode" id="postcode">
+                    <span asp-validation-for=AddressInfo.PostalCode class="error error-styling"></span>
                 </div>
                 <div class="city-div">
                     <label asp-for=AddressInfo.City class="labels"></label>
-                    <input asp-for="Address.City" id="city">
+                    <input asp-for=AddressInfo.City id="city">
+                    <span asp-validation-for=AddressInfo.City class="error error-styling"></span>
                 </div>
             </div>
 
             <div class="buttons-float">
-                <button class="btn-gray">Cancel</button>
+                <button asp-controller="Account" asp-action="Details" class="btn-gray">Cancel</button>
                 <button type="submit" class="btn-theme">Save Changes</button>
             </div>
         </form>
     </div>
-
-
-
-
 </div>
+
+@await Html.PartialAsync("~/Views/Shared/_ValidationScriptPartial.cshtml")
 

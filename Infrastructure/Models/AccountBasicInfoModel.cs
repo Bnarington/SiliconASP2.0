@@ -15,7 +15,7 @@ public class AccountBasicInfoModel
 
     [DataType(DataType.EmailAddress)]
     [Display(Name = "Email adress", Prompt = "Enter your email adress", Order = 2)]
-    [RegularExpression("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", ErrorMessage = "Invalid email address.")]
+    [RegularExpression("^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$", ErrorMessage = "Invalid email address.")]
     public string Email { get; set; } = null!;
 
     [DataType(DataType.PhoneNumber)]
@@ -24,6 +24,7 @@ public class AccountBasicInfoModel
     public string Phone { get; set; } = null!;
 
     [DataType(DataType.MultilineText)]
+    [MaxLength(500)]
     [Display(Name = "Biography", Prompt = "Write something about yourself!", Order = 4)]
     public string? Bio {  get; set; }
     public string ProfileImage { get; set; } = null!;

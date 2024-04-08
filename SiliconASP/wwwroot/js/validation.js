@@ -209,6 +209,14 @@ const textValidator = (element, minLength = 2) => {
     }
 }
 
+const textAreaValidator = (element, maxLength = 500) => {
+    if (element.value.length >= maxLength) {
+        formErrorHandler(element, true)
+    } else {
+        formErrorHandler(element, false)
+    }
+} 
+
 const emailValidator = (element) => {
     const regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -264,6 +272,10 @@ inputs.forEach(input => {
 
                     case 'password':
                         passwordValidator(e.target)
+                        break
+
+                    case 'textarea':
+                        textAreaValidator(e.target)
                 }
             })
         }

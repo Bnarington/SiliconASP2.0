@@ -1,56 +1,31 @@
 ﻿@model CoursesViewModel
 
 @{
-    ViewData["Title"] = Model.Title;
+    ViewData["Title"] = "Courses";
 }
 
-<section class="top-courses">
+<div class="top-courses">
     <div class="courses-header">
 
         <div class="courses-left"><h1>Courses</h1></div>
 
 
         <div class="courses-right">
-            @using (Html.BeginForm("Search", "Home", FormMethod.Get))
-            {
-                <select class="select-course" name="categories">
-                    <option value="all-categories">All Categories</option>
-                    @foreach (var category in Model.Search.Categories)
-                    {
-                        <option value="@category.Name" selected="@category.SelectedCategory">@category.Name</option>
-                    }
-                </select>
+            <select class="select-course" name="categories" id="">
+                <option value="all-categories">All Categories</option>
+                <option value="more-options">More Options here</option>
+            </select>
 
-                <input type="search" name="cssearch" id="csserch" placeholder="Search Courses">
-                <button type="submit" class="btn-theme">Search</button>
-            }
+            <search>
+                <form class="search-course" name="coureses-search">
+                    <input type="search" name="cssearch" id="csserch" placeholder="Search Courses">
+                </form>
+            </search>
         </div>
 
     </div>
     <div class="courses-grid">
         <div class="cards">
-
-            @foreach (var card in Model.CoursesCards)
-            {
-                <div class="card">
-                    <img src="@card.Image.ImageURL" alt="@card.Image.AltText" class="card-img-top">
-                    <img src="@card.Icon.ImageURL" alt="@card.Icon.AltText" class="best-seller">
-                    <img src="@card.Bookmark.ImageURL" alt="@card.Bookmark.AltText" class="bookmark">
-                    <div class="card-body">
-                        <h2 class="card-title">@card.CardTitle</h2>
-                        <p class="author">
-                            @card.CardAuthor
-                        </p>
-                        <p class="price">
-                            @card.CardPrice
-                        </p>
-                        <p class="time-and-likes">
-                            <img src="Images\Icons\bx-time-five.svg" alt="">@card.TimeAndLikes.Time <img src="Images\Icons\bx-like.png" alt=""> @card.TimeAndLikes.Likes
-                        </p>
-                    </div>               
-                </div>
-            }
-
             <div class="card">
                 <img src="https://picsum.photos/200/100" alt="..." class="card-img-top">
                 <img src="Images\Icons\badge.svg" alt="" class="best-seller">
@@ -210,7 +185,7 @@
             </div>
         </div>
     </div>
-</section>
+</div>
 
 <div class="top-banner">
     <div class="text-block">

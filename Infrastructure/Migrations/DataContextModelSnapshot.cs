@@ -33,6 +33,9 @@ namespace Infrastructure.Migrations
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("OptionalStreet")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PostalCode")
                         .HasColumnType("nvarchar(max)");
 
