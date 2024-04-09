@@ -17,7 +17,9 @@
     </div>
     <form method="post" action="@Url.Action("Subscibe", "Newsletter")">
         <div class="newsletters-email">
-            <input type="email" name="Email" id="" placeholder="Enter Email">  <button class="btn-theme">Subscribe*</button>
+            <label asp-for=@Model.Newsletter></label>
+            <input asp-for=@Model.Newsletter />                      
+            <button class="btn-theme">Subscribe*</button>
             <p>* Yes, I agree to the <a href="@Model.TermsLink">@Model.TermsLink.Text</a> and <a href="@Model.PrivacyLink">privacy</a>@Model.PrivacyLink.Text</p>
         </div>
     </form>

@@ -1,0 +1,33 @@
+//_forms.scss
+form {
+    gap: 1rem;
+}
+
+.input-control {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    @include shadow-m;
+    border-radius: 0.5rem;
+    border: 1px solid var(--Gray-400, #D4D7E5);
+    background: var(--White, #FFF);
+    width: 100%;
+    padding: 0.5rem;   
+    }
+
+input[type="checkbox"] {
+    width: 2rem;
+}
+
+label {
+    text-align: left;
+    @include standard-text;
+    @include text-m;
+    font-weight: 600;
+}
+
+a {
+    color: var(--Brand-Primary, #6366F1);
+}

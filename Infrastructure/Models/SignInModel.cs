@@ -14,7 +14,7 @@ namespace Infrastructure.Models
         [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; } = null!;
 
-        [Display(Name = "Remember me", Prompt = "Enter your email adress", Order = 2)]
+        [Display(Name = "Keep me logged in.", Prompt = "Keep me logged in.", Order = 2)]
         public bool RememberMe { get; set; }
     }
 }

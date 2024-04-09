@@ -1,102 +1,27 @@
-.signup-form {
+#signup {
+    display: flex;
     align-content: center;
     justify-content: center;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    text-align: center;
+    padding: 2rem;
+    margin: 2rem auto;
+    @include shadow-s;
 
     @include xl {
         flex-shrink: 0;
     }
+}
 
+.signup-form {
+    display: flex;
+    flex-direction: column;
 
-    h1 {
-        @include standard-heading;
-        @include h1;
-        @include lg;
-    }
+    .names-container {
 
-    .signin-text {
-        @include standard-text;
-
-        a {
-            @include standard-text;
-            color: var(--Brand-Primary, #6366F1);
-            text-decoration: none;
-        }
-    }
-
-    .input-control {
-
-        input {
-            border-radius: 0.5rem;
-            border: 1px solid var(--Gray-400, #D4D7E5);
-            background: var(--White, #FFF);
-            width: 100%;
-            padding: 0.5rem;
-        }
-
-        label {
-            @include standard-text;
-        }
-
-        .checkmark {
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-
-            .remcheck-label {
-                @include standard-text;
-            }
-        }
-    }
-    //Validation styling
-    .error {
-
-        input {
-            border-color: #EF4444;
-            background-image: url(../../../Images/Icons/bx-red-x.svg);
-            display: inline-block;
-            background-repeat: no-repeat;
-            vertical-align: middle;
-            background-position: right;
-        }
-
-
-        @include text-s;
-        color: var(--System-Error, #EF4444);
-    }
-
-    .input-control {
-        display: flex;
-        flex-direction: column;
-        height: 4rem;
-        margin-bottom: 1rem;
-
-        .error-styling {
-            position: absolute;
-            right: 45%;
-            display: flex;
-            padding: 0rem 0.5rem;
-            align-items: flex-start;
-            gap: 0.25rem;
-            border-radius: 0.25rem;
-            background: rgba(239, 68, 68, 0.12);
-            color: var(--System-Error, #EF4444);
-        }
-    }
-
-    .success {
-        @include text-s;
-        color: var(--System-Success, #22C55E);
-
-        input {
-            border-color: #22C55E;
-            background-image: url(../../../Images/Icons/bx-green-checkmark.svg);
-            display: inline-block;
-            background-repeat: no-repeat;
-            vertical-align: middle;
-            background-position: right;
+        @include xl {
+            display: grid;
+            grid-template-columns: repeat(2, auto);
+            gap: 1rem;
         }
     }
 }

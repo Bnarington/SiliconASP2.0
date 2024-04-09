@@ -1,2 +1,45 @@
+//_validation.scss
 
+.error {
+    input {
+        border-color: #EF4444;
+        background-image: url(../../../Images/Icons/bx-red-x.svg);
+        display: inline-block;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+        background-position: right;
+    }
 
+    color: var(--System-Error, #EF4444);
+    /* Body/XS */
+    font-family: Manrope;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%; /* 1.2rem */
+}
+
+.success {
+    color: var(--System-Success, #22C55E);
+    @include standard-text;
+    @include text-s;
+
+    input {
+        border-color: #22C55E;
+        background-image: url(../../../Images/Icons/bx-green-checkmark.svg);
+        display: inline-block;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+        background-position: right;
+    }
+}
+
+.error-styling {
+    display: flex;
+    padding: 0rem 0.5rem;
+    align-items: flex-start;
+    gap: 0.25rem;
+    border-radius: 0.25rem;
+    background: rgba(239, 68, 68, 0.12);
+    color: var(--System-Error, #EF4444);
+}

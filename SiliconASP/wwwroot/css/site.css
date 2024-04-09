@@ -33,26 +33,25 @@ html, body {
 }
 
 [data-theme=dark] {
-  --color-white: #FFFFFF;
-  --color-black: #000000;
-  --color-gray: #EFF2FC;
+  --color-white: #0B0F19;
+  --color-black: #FFFFFF;
+  --color-gray: #565973;
   --color-theme: #6366F1;
-  --color-danger: #F5D7DA;
-  --color-danger-dark: #e57e88;
+  --color-danger: #e57e88;
+  --color-danger-dark: #F5D7DA;
   --color-success: #bcf7d2;
   --color-warning: #ffe8ad;
   --color-info: #cfdefd;
-  --color-gray-000: #0B0F19;
-  --color-gray-100: #33354D;
-  --color-gray-200: #565973;
-  --color-gray-300: #9397AD;
-  --color-gray-400: #B4B7C9;
-  --color-gray-500: #D4D7E5;
-  --color-gray-600: #E2E5F1;
-  --color-gray-700: #EFF2FC;
-  --color-gray-800: #F3F6FF;
-  --color-gray-900: #FFFFFF;
-  --font-standard: "Manrope", sans-serif;
+  --color-gray-000: #FFFFFF;
+  --color-gray-100: #F3F6FF;
+  --color-gray-200: #EFF2FC;
+  --color-gray-300: #E2E5F1;
+  --color-gray-400: #D4D7E5;
+  --color-gray-500: #B4B7C9;
+  --color-gray-600: #9397AD;
+  --color-gray-700: #565973;
+  --color-gray-800: #33354D;
+  --color-gray-900: #0B0F19;
 }
 
 .text-xs {
@@ -412,6 +411,95 @@ a:hover {
   text-decoration: none;
   background: #565973;
   color: #FFFFFF;
+}
+
+.error {
+  color: var(--System-Error, #EF4444);
+  /* Body/XS */
+  font-family: Manrope;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%; /* 1.2rem */
+}
+.error input {
+  border-color: #EF4444;
+  background-image: url(../../../Images/Icons/bx-red-x.svg);
+  display: inline-block;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  background-position: right;
+}
+
+.success {
+  color: var(--System-Success, #22C55E);
+  line-height: 160%;
+  font-weight: 400;
+  color: var(--color-gray-700);
+  font-family: "Manrope", sans-serif;
+  line-height: 160%;
+  font-weight: 400;
+  color: var(--color-gray-700);
+  font-family: "Manrope", sans-serif;
+  font-size: 14px !important;
+}
+.success input {
+  border-color: #22C55E;
+  background-image: url(../../../Images/Icons/bx-green-checkmark.svg);
+  display: inline-block;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  background-position: right;
+}
+
+.error-styling {
+  display: flex;
+  padding: 0rem 0.5rem;
+  align-items: flex-start;
+  gap: 0.25rem;
+  border-radius: 0.25rem;
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--System-Error, #EF4444);
+}
+
+form {
+  gap: 1rem;
+}
+
+.input-control {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  box-shadow: 0px 4px 9px -1px rgba(19, 16, 34, 0.03), 0px 4.4px 20px -1px rgba(19, 16, 34, 0.05);
+  border-radius: 0.5rem;
+  border: 1px solid var(--Gray-400, #D4D7E5);
+  background: var(--White, #FFF);
+  width: 100%;
+  padding: 0.5rem;
+}
+
+input[type=checkbox] {
+  width: 2rem;
+}
+
+label {
+  text-align: left;
+  line-height: 160%;
+  font-weight: 400;
+  color: var(--color-gray-700);
+  font-family: "Manrope", sans-serif;
+  line-height: 160%;
+  font-weight: 400;
+  color: var(--color-gray-700);
+  font-family: "Manrope", sans-serif;
+  font-size: 16px !important;
+  font-weight: 600;
+}
+
+a {
+  color: var(--Brand-Primary, #6366F1);
 }
 
 header {
@@ -1329,291 +1417,52 @@ footer .container .social-media {
     margin: 0 auto 2rem;
   }
 }
-.top-title {
+#signin {
   display: flex;
   align-content: center;
   justify-content: center;
   text-align: center;
+  padding: 2rem;
+  margin: 2rem auto;
+  box-shadow: 0px 2px 6.4px -1px rgba(19, 16, 34, 0.03), 0px 4.4px 12px -1px rgba(19, 16, 34, 0.06);
 }
-.top-title .signin-form {
-  align-content: center;
-  justify-content: center;
-  text-align: left;
+
+.signin-form {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+}
+
+.checkmark {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#signup {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  margin: 2rem auto;
+  box-shadow: 0px 2px 6.4px -1px rgba(19, 16, 34, 0.03), 0px 4.4px 12px -1px rgba(19, 16, 34, 0.06);
 }
 @media (min-width: 1200px) {
-  .top-title .signin-form {
+  #signup {
     flex-shrink: 0;
   }
-}
-.top-title .signin-form h1 {
-  color: var(--Gray-900, #0B0F19);
-  font-feature-settings: "clig" off, "liga" off;
-  line-height: 160%;
-  font-weight: 400;
-  color: var(--color-gray-700);
-  font-family: "Manrope", sans-serif;
-  font-weight: 800;
-  color: var(--color-gray-900);
-  font-size: 28px !important;
-}
-@media (min-width: 992px) {
-  .top-title .signin-form h1 {
-    /* Heading / H1 */
-    font-family: Manrope;
-    font-size: 2.5rem;
-    font-style: normal;
-    font-weight: 800;
-    line-height: 130%; /* 3.25rem */
-  }
-}
-.top-title .signin-form .signup-text {
-  color: var(--Gray-700, #565973);
-  font-feature-settings: "clig" off, "liga" off;
-  /* Body/M */
-  font-family: Manrope;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 160%; /* 1.6rem */
-}
-.top-title .signin-form .signup-text a {
-  color: var(--Brand-Primary, #6366F1);
-  font-feature-settings: "clig" off, "liga" off;
-  /* Body/M */
-  font-family: Manrope;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 160%;
-  text-decoration: none;
-}
-.top-title .signin-form .password {
-  border-radius: 0.5rem;
-  border: 1px solid var(--Gray-400, #D4D7E5);
-  background: var(--White, #FFF);
-  width: 100%;
-  padding: 0.5rem;
-}
-.top-title .signin-form .email {
-  border-radius: 0.5rem;
-  border: 1px solid var(--Gray-400, #D4D7E5);
-  background: var(--White, #FFF);
-  width: 100%;
-  padding: 0.5rem;
-}
-.top-title .signin-form .checkmark {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-.top-title .signin-form .labels {
-  color: var(--Gray-900, #0B0F19);
-  font-feature-settings: "clig" off, "liga" off;
-  font-family: Manrope;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 160%; /* 1.6rem */
-  margin-bottom: 0;
-}
-.top-title .signin-form .remcheck-label {
-  color: var(--Gray-700, #565973);
-  font-feature-settings: "clig" off, "liga" off;
-  /* Body/M */
-  font-family: Manrope;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 160%; /* 1.6rem */
-}
-.top-title .signin-form .forgot-pass-top {
-  display: flex;
-  padding: 0.8125rem 2rem;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  align-self: stretch;
-}
-.top-title .signin-form .forgot-pass-top .forgot-pass {
-  text-decoration: none;
-  color: var(--Brand-Primary, #6366F1);
-  text-align: center;
-  font-feature-settings: "clig" off, "liga" off;
-  font-family: Manrope;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 160%; /* 1.6rem */
-}
-.top-title .signin-form .forgot-pass-top .forgot-pass:hover {
-  color: blue;
-  text-decoration: underline;
-}
-.top-title .signin-form .error {
-  color: var(--System-Error, #EF4444);
-  /* Body/XS */
-  font-family: Manrope;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 160%; /* 1.2rem */
-}
-.top-title .signin-form .error input {
-  border-color: #EF4444;
-  background-image: url(../../../Images/Icons/bx-red-x.svg);
-  display: inline-block;
-  background-repeat: no-repeat;
-  vertical-align: middle;
-  background-position: right;
-}
-.top-title .signin-form .input-control {
-  display: flex;
-  flex-direction: column;
-  height: 4rem;
-  margin-bottom: 1rem;
-}
-.top-title .signin-form .success {
-  color: var(--System-Success, #22C55E);
-  /* Body/XS */
-  font-family: Manrope;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 160%; /* 1.2rem */
-}
-.top-title .signin-form .success input {
-  border-color: #22C55E;
-  background-image: url(../../../Images/Icons/bx-green-checkmark.svg);
-  display: inline-block;
-  background-repeat: no-repeat;
-  vertical-align: middle;
-  background-position: right;
-}
-.top-title .signin-form .error-styling {
-  display: flex;
-  padding: 0rem 0.5rem;
-  align-items: flex-start;
-  gap: 0.25rem;
-  border-radius: 0.25rem;
-  background: rgba(239, 68, 68, 0.12);
-  color: var(--System-Error, #EF4444);
 }
 
 .signup-form {
-  align-content: center;
-  justify-content: center;
-  text-align: left;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
 }
 @media (min-width: 1200px) {
-  .signup-form {
-    flex-shrink: 0;
+  .signup-form .names-container {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 1rem;
   }
-}
-.signup-form h1 {
-  line-height: 160%;
-  font-weight: 400;
-  color: var(--color-gray-700);
-  font-family: "Manrope", sans-serif;
-  font-weight: 800;
-  color: var(--color-gray-900);
-  line-height: 160%;
-  font-weight: 400;
-  color: var(--color-gray-700);
-  font-family: "Manrope", sans-serif;
-  font-weight: 800;
-  color: var(--color-gray-900);
-  font-size: 40px !important;
-}
-.signup-form .signin-text {
-  line-height: 160%;
-  font-weight: 400;
-  color: var(--color-gray-700);
-  font-family: "Manrope", sans-serif;
-}
-.signup-form .signin-text a {
-  line-height: 160%;
-  font-weight: 400;
-  color: var(--color-gray-700);
-  font-family: "Manrope", sans-serif;
-  color: var(--Brand-Primary, #6366F1);
-  text-decoration: none;
-}
-.signup-form .input-control input {
-  border-radius: 0.5rem;
-  border: 1px solid var(--Gray-400, #D4D7E5);
-  background: var(--White, #FFF);
-  width: 100%;
-  padding: 0.5rem;
-}
-.signup-form .input-control label {
-  line-height: 160%;
-  font-weight: 400;
-  color: var(--color-gray-700);
-  font-family: "Manrope", sans-serif;
-}
-.signup-form .input-control .checkmark {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-.signup-form .input-control .checkmark .remcheck-label {
-  line-height: 160%;
-  font-weight: 400;
-  color: var(--color-gray-700);
-  font-family: "Manrope", sans-serif;
-}
-.signup-form .error {
-  line-height: 160%;
-  font-weight: 400;
-  color: var(--color-gray-700);
-  font-family: "Manrope", sans-serif;
-  font-size: 14px !important;
-  color: var(--System-Error, #EF4444);
-}
-.signup-form .error input {
-  border-color: #EF4444;
-  background-image: url(../../../Images/Icons/bx-red-x.svg);
-  display: inline-block;
-  background-repeat: no-repeat;
-  vertical-align: middle;
-  background-position: right;
-}
-.signup-form .input-control {
-  display: flex;
-  flex-direction: column;
-  height: 4rem;
-  margin-bottom: 1rem;
-}
-.signup-form .input-control .error-styling {
-  position: absolute;
-  right: 45%;
-  display: flex;
-  padding: 0rem 0.5rem;
-  align-items: flex-start;
-  gap: 0.25rem;
-  border-radius: 0.25rem;
-  background: rgba(239, 68, 68, 0.12);
-  color: var(--System-Error, #EF4444);
-}
-.signup-form .success {
-  line-height: 160%;
-  font-weight: 400;
-  color: var(--color-gray-700);
-  font-family: "Manrope", sans-serif;
-  font-size: 14px !important;
-  color: var(--System-Success, #22C55E);
-}
-.signup-form .success input {
-  border-color: #22C55E;
-  background-image: url(../../../Images/Icons/bx-green-checkmark.svg);
-  display: inline-block;
-  background-repeat: no-repeat;
-  vertical-align: middle;
-  background-position: right;
 }
 
 .top-details {
@@ -1808,53 +1657,4 @@ footer .container .social-media {
 }
 .top-details .top-form #city {
   margin-bottom: 1rem;
-}
-.top-details .error {
-  color: var(--System-Error, #EF4444);
-  /* Body/XS */
-  font-family: Manrope;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 160%; /* 1.2rem */
-}
-.top-details .error input {
-  border-color: #EF4444;
-  background-image: url(../../../Images/Icons/bx-red-x.svg);
-  display: inline-block;
-  background-repeat: no-repeat;
-  vertical-align: middle;
-  background-position: right;
-}
-.top-details .input-control {
-  display: flex;
-  flex-direction: column;
-  height: 4rem;
-  margin-bottom: 1rem;
-}
-.top-details .success {
-  color: var(--System-Success, #22C55E);
-  /* Body/XS */
-  font-family: Manrope;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 160%; /* 1.2rem */
-}
-.top-details .success input {
-  border-color: #22C55E;
-  background-image: url(../../../Images/Icons/bx-green-checkmark.svg);
-  display: inline-block;
-  background-repeat: no-repeat;
-  vertical-align: middle;
-  background-position: right;
-}
-.top-details .error-styling {
-  display: flex;
-  padding: 0rem 0.5rem;
-  align-items: flex-start;
-  gap: 0.25rem;
-  border-radius: 0.25rem;
-  background: rgba(239, 68, 68, 0.12);
-  color: var(--System-Error, #EF4444);
 }

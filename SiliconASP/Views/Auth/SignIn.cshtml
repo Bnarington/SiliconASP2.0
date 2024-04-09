@@ -5,7 +5,7 @@
 }
 
 <section id="signin" class="top-title">
-    <form method="post" asp-controller="Auth" asp-action="SignIn" class="signin-form">
+    <form method="post" asp-controller="Auth" asp-action="SignIn" asp-route-ReturnUrl="@ViewData["ReturnUrl"] class="signin-form">
         <div class="error error-styling">
             @ViewData["ErrorMessage"]
         </div>
@@ -24,8 +24,8 @@
         </div>
 
         <div class="checkmark">
-            <input asp-for="Form.RememberMe" type="checkbox" id="term-check" class="termscheck" title="Remember me">
-            <label for="term-check" class="term-label">Remember me next time.</label>
+            <input asp-for="Form.RememberMe" type="checkbox" id="remembercheck" class="remembercheck" title="Remember me">
+            <label asp-for=Form.RememberMe class="remembermelabel"></label>
         </div>
         <button type="submit" class="btn-theme-s" formmethod="post">Login</button>
         <a class="forgot-pass btn-gray" asp-controller="Account" asp-action="ForgotPw">Forgot your password?</a>

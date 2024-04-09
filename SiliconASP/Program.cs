@@ -1,5 +1,6 @@
 using Infrastructure.Contexts;
 using Infrastructure.Entities;
+using Infrastructure.Helpers.MiddleWare;
 using Infrastructure.Repositories;
 using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
@@ -16,17 +17,19 @@ builder.Services.AddDefaultIdentity<UserEntity>(x =>
     x.Password.RequiredLength = 8;
 }).AddEntityFrameworkStores<DataContext>();
 
+builder.Services.ConfigureApplicationCookie(x =>
+{
+    x.Cookie.HttpOnly = true;
+    x.LoginPath = "/signin";
+    x.LogoutPath = "/signout";
+});
+
 builder.Services.AddScoped<AddressRepo>();
 builder.Services.AddScoped<UserRepo>();
 builder.Services.AddScoped<FeautreRepo>();
 builder.Services.AddScoped<FeatureItemRepo>();
 builder.Services.AddScoped<FeatureService>();
 builder.Services.AddScoped<AddressService>();
-//builder.Services.AddAuthentication("AuthCookie").AddCookie("AuthCookie", x =>
-//{
-//    x.LoginPath = "/signin";
-//    x.ExpireTimeSpan = TimeSpan.FromMinutes(60);
-//});
 
 var app = builder.Build();
 
@@ -34,8 +37,9 @@ app.UseHsts();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseUserSessionValidation();
+app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

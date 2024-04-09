@@ -2,11 +2,14 @@
 using Infrastructure.Factories;
 using Infrastructure.Models;
 using Infrastructure.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SiliconASP.ViewModels.Sections;
 
 namespace SiliconASP.Controllers;
+
+[Authorize]
 public class AccountController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager, AddressService addressService) : Controller
 {
 
@@ -20,37 +23,56 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
         if (!_signInManager.IsSignedIn(User))
             return RedirectToAction("SignIn", "Auth");
 
-    
-        var userEntity = await _userManager.GetUserAsync(User);
-        var addressEntity = await _addressService.GetAddressEntityAsync(userEntity!.AddressId);
-        var address = (AddressEntity)addressEntity.ContentResult!;
-
-        if (userEntity != null)
+        if (ModelState.IsValid != false)
         {
-            var viewModel = new AccountDetailsViewModel()
-            {
-                User = userEntity!,
-                Address = (AddressEntity)addressEntity.ContentResult!,
-                BasicInfo = new AccountBasicInfoModel
-                {
-                    FirstName = userEntity.FirstName,
-                    LastName = userEntity.LastName,
-                    Email = userEntity.Email!,
-                    Phone = userEntity.PhoneNumber!,
-                    Bio = userEntity.Bio
-                },
-                AddressInfo = new AccountAdressInfoModel
-                {
-                    AddressLine_1 = address.StreetName!,
-                    AddressLine_2 = address.OptionalStreet,
-                    PostalCode = address.PostalCode!,
-                    City = address.City! 
-                }
-            };
+            var userEntity = await _userManager.GetUserAsync(User);
+            var addressEntity = await _addressService.GetAddressEntityAsync(userEntity!.AddressId);
+            var address = (AddressEntity)addressEntity.ContentResult!;
 
-            return View(viewModel);
+            if (userEntity != null && address != null)
+            {
+                var viewModel = new AccountDetailsViewModel()
+                {
+                    User = userEntity!,
+                    Address = (AddressEntity)addressEntity.ContentResult!,
+                    BasicInfo = new AccountBasicInfoModel
+                    {
+                        FirstName = userEntity.FirstName,
+                        LastName = userEntity.LastName,
+                        Email = userEntity.Email!,
+                        Phone = userEntity.PhoneNumber!,
+                        Bio = userEntity.Bio
+                    },
+                    AddressInfo = new AccountAdressInfoModel
+                    {
+                        AddressLine_1 = address.StreetName!,
+                        AddressLine_2 = address.OptionalStreet,
+                        PostalCode = address.PostalCode!,
+                        City = address.City!
+                    }
+                };
+
+                return View(viewModel);
+            }
+            else if (userEntity != null && address == null)
+            {
+                var viewModel = new AccountDetailsViewModel()
+                {
+                    User = userEntity!,
+                    Address = (AddressEntity)addressEntity.ContentResult!,
+                    BasicInfo = new AccountBasicInfoModel
+                    {
+                        FirstName = userEntity.FirstName,
+                        LastName = userEntity.LastName,
+                        Email = userEntity.Email!,
+                        Phone = userEntity.PhoneNumber!,
+                        Bio = userEntity.Bio
+                    }
+
+                };
+                return View(viewModel);
+            }
         }
- 
         return View();
     }
 
@@ -102,10 +124,6 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
                 }
             }
         }
-
-
-
-
         return RedirectToAction("Details", "Account", viewModel);
     }
 }
