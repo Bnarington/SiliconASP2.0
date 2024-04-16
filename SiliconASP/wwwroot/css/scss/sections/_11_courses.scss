@@ -1,253 +1,222 @@
-.courses-header {
-  display: flex;
-  justify-content: space-between;
-
-  @include xl {
-    justify-content: space-between;
-    align-items: center;
-
-    width: 100%;
-  }
-
-  .courses-right {
+.courses {
     display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
+    justify-content: space-between;
 
     @include xl {
-      flex-direction: row;
-      gap: 2rem;
-      align-items: center;
-    }
-  }
-
-  .select-course {
-    @include xl {
-      width: 15rem;
-      height: 2.75rem;
-      margin-right: 0;
-    }
-    margin-right: 0.3rem;
-    border-radius: 0.375rem;
-    border: 1px solid var(--Gray-400, #d4d7e5);
-    background: var(--White, #fff);
-  }
-
-  .search-course {
-    @include xl {
-      width: 18.75rem;
-      height: 2.75rem;
-      margin-bottom: 0;
-
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
     }
 
-    margin-bottom: 2rem;
-    margin-right: 0.3rem;
+    #form-filters {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        justify-content: end;
+        padding-bottom: 1rem;
 
-    input {
-      @include xl {
-        width: 18.75rem;
-        height: 2.75rem;
-      }
-
-      border-radius: 0.375rem;
-      border: 1px solid var(--Gray-400, #d4d7e5);
-      background: var(--White, #fff);
-
-      background-image: url("../../../Images/Icons/bx-search.svg");
-      background-position: right;
-      background-repeat: no-repeat;
+        @include xl {
+            flex-direction: row;
+            gap: 2rem;
+            align-items: center;
+        }
     }
-  }
+
+    select, input {
+        @include xl {
+            width: 15rem;
+            height: 2.75rem;
+            margin-right: 0;
+        }
+
+        margin-right: 0.3rem;
+        border-radius: 0.375rem;
+        border: 1px solid var(--Gray-400, #d4d7e5);
+        background: var(--White, #fff);
+    }
+
+    a {
+        text-decoration: none;
+        @include standard-text;
+    }
 }
 
-.top-banner {
-  margin-top: 10rem;
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
-
-  border-radius: 0.5rem;
-  background: var(--Gray-100, #f3f6ff);
-
-  .sub-header {
-    align-self: stretch;
-    color: var(--Gray-700, #565973);
-    font-feature-settings: "clig" off, "liga" off;
-
-    @include xl {
-      /* Body/Lead */
-      font-family: Manrope;
-      font-size: 1.5rem;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 160%; /* 2.4rem */
-    }
-  }
-
-  h1 {
-    align-self: stretch;
-
-    color: var(--Gray-900, #0b0f19);
-    font-feature-settings: "clig" off, "liga" off;
-
-    @include h6;
-
-    @include xl {
-      /* Heading / H1 */
-      font-family: Manrope;
-      font-size: 2.5rem;
-      font-style: normal;
-      font-weight: 800;
-      line-height: 130%; /* 3.25rem */
-    }
-
-    .skills {
-      color: var(--Brand-Primary, #6366f1);
-      font-feature-settings: "clig" off, "liga" off;
-
-      @include xl {
-        /* Heading / H1 */
-        font-family: Manrope;
-        font-size: 2.5rem;
-        font-style: normal;
-        font-weight: 800;
-        line-height: 130%;
-      }
-    }
-  }
-
-  button {
-    margin-top: 2.5rem;
-  }
-
-  img {
-    display: none;
-
-    @include xl {
-      display: block;
-    }
-  }
+.course-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    //margin: 37px auto 0;
+    width: calc(280px * 4);
+    gap: 2rem;
 }
 
-.cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  //margin: 37px auto 0;
-  width: calc(280px * 4);
-  gap: 2rem;
-
-  .card {
-    box-shadow: 0 3px 10px 0 #aaa;
-    cursor: pointer;
+.top-content {
+    display: block;
     position: relative;
-
-    height: 22rem;
-    width: 15rem;
-  
-
-    @include xxl {
-      height: 29.5625rem;
-      width: 26rem;
-    }
-  
     border-radius: 0.5rem;
-    background: var(--White, #fff);
-    box-shadow: 0px 2px 6.4px -1px rgba(19, 16, 34, 0.03),
-      0px 4.4px 12px -1px rgba(19, 16, 34, 0.06);
-  
-    .author {
-      color: var(--Gray-700, #565973);
-      font-feature-settings: "clig" off, "liga" off;
-      /* Body/S */
-      font-family: Manrope;
-      font-size: 0.875rem;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 160%; /* 1.4rem */
-  
-      align-self: stretch;
-    }
-  
-    .price {
-      color: var(--Brand-Primary, #6366f1);
-      font-feature-settings: "clig" off, "liga" off;
-      font-family: Manrope;
-      font-size: 1.125rem;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 160%; /* 1.8rem */
-    }
-  
-    .time-and-likes {
-      border-top: 0.0625rem #e2e5f1 solid;
-      color: var(--Gray-600, #9397ad);
-      font-feature-settings: "clig" off, "liga" off;
-  
-      /* Body/S */
-      font-family: Manrope;
-      font-size: 0.875rem;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 160%; /* 1.4rem */
-    }
-  
-    .best-seller {
-      display: inline-flex;
-      padding: 0rem 0.5rem;
-      align-items: flex-start;
-      gap: 0.25rem;
-  
-      position: absolute;
-      top: 2%;
-    }
-  
-    .bookmark {
-      position: absolute;
+    box-sizing: border-box;
 
-      left: 82%;
-      top: 2%;
-
-      @include xl {
-        left: 90%;
-        top: 2%;
-      }
-
+    .btn-circle {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        border-radius: 50%;
+        width: 2.5rem;
+        height: 2.5rem;
+        background: #FFF;
+        color: var(--Gray-700, #565973);
+        border: 1px solid var(--Gray-400, #d4d7e5);
+        transition: width 0.3s ease, height 0.3s ease;
     }
 
-    h2 {
-      
-      @include h6;
-
-      @include xl {
-        @include h5;
-      }
+    .btn-circle:hover {
+        height: 3rem;
+        width: 3rem;
     }
-  }
+
+    .bestseller {
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
+        border-radius: 0.5rem;
+        padding: 0.25rem 0.5rem;
+        background-color: #22C55E;
+        color: #FFFFFF;
+        font-weight: bold;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        @include shadow-m;
+    }
+
+    .pricing {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+
+        .discount {
+            color: red;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .discount-enabled {
+            color: #9397AD;
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+    }
+
+    img {
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+    }
+
+    .footer {
+        display: inline-flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+        border-top: solid 1.5px #E2E5F1;
+        padding-top: 0.6rem;
+        opacity: 0.6;
+    }
 }
 
-.card:hover {
-  box-shadow: 0 3px 10px 2px #444;
+.top-content:hover {
+    box-shadow: 0 3px 10px 2px #444;
 }
 
 @media (max-width: 1100px) {
-  .cards {
-    grid-template-columns: 1fr 1fr;
-    width: calc(280px * 2);
-  }
-  .card {
-    margin: 0 auto 2rem;
-  }
+    .course-items {
+        grid-template-columns: 1fr 1fr;
+        width: calc(280px * 2);
+    }
+
+    .top-content {
+        margin: 0 auto 2rem;
+    }
 }
 
 @media (max-width: 768px) {
-  .cards {
-    display: block;
-    width: 100vw;
-  }
-  .card {
-    margin: 0 auto 2rem;
-  }
+    .course-items {
+        display: block;
+        width: 100vw;
+    }
+
+    .top-content {
+        margin: 0 auto 2rem;
+    }
+}
+
+.top-banner {
+    margin-top: 10rem;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    border-radius: 0.5rem;
+    background: var(--Gray-100, #f3f6ff);
+
+    .sub-header {
+        align-self: stretch;
+        color: var(--Gray-700, #565973);
+        font-feature-settings: "clig" off, "liga" off;
+
+        @include xl {
+            /* Body/Lead */
+            font-family: Manrope;
+            font-size: 1.5rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 160%; /* 2.4rem */
+        }
+    }
+
+    h1 {
+        align-self: stretch;
+        color: var(--Gray-900, #0b0f19);
+        font-feature-settings: "clig" off, "liga" off;
+
+        @include h6;
+
+        @include xl {
+            /* Heading / H1 */
+            font-family: Manrope;
+            font-size: 2.5rem;
+            font-style: normal;
+            font-weight: 800;
+            line-height: 130%; /* 3.25rem */
+        }
+
+        .skills {
+            color: var(--Brand-Primary, #6366f1);
+            font-feature-settings: "clig" off, "liga" off;
+
+            @include xl {
+                /* Heading / H1 */
+                font-family: Manrope;
+                font-size: 2.5rem;
+                font-style: normal;
+                font-weight: 800;
+                line-height: 130%;
+            }
+        }
+    }
+
+    button {
+        margin-top: 2.5rem;
+    }
+
+    img {
+        display: none;
+
+        @include xl {
+            display: block;
+        }
+    }
 }

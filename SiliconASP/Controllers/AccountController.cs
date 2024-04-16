@@ -28,6 +28,8 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
             var userEntity = await _userManager.GetUserAsync(User);
             var addressEntity = await _addressService.GetAddressEntityAsync(userEntity!.AddressId);
             var address = (AddressEntity)addressEntity.ContentResult!;
+            string imageBase64 = userEntity.ProfileImage != null ? Convert.ToBase64String(userEntity.ProfileImage) : null!;
+            string profileImgSrc = $"data:image/jpeg;base64, {imageBase64}";
 
             if (userEntity != null && address != null)
             {
@@ -41,7 +43,8 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
                         LastName = userEntity.LastName,
                         Email = userEntity.Email!,
                         Phone = userEntity.PhoneNumber!,
-                        Bio = userEntity.Bio
+                        Bio = userEntity.Bio,
+                        ProfileImageSrc = profileImgSrc
                     },
                     AddressInfo = new AccountAdressInfoModel
                     {
@@ -66,7 +69,8 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
                         LastName = userEntity.LastName,
                         Email = userEntity.Email!,
                         Phone = userEntity.PhoneNumber!,
-                        Bio = userEntity.Bio
+                        Bio = userEntity.Bio,
+                        ProfileImageSrc = profileImgSrc
                     }
 
                 };
@@ -80,12 +84,22 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
     public async Task<IActionResult> BasicInfo(AccountDetailsViewModel viewModel)
     {
         var user = await _userManager.FindByEmailAsync(viewModel.BasicInfo.Email!);
-        if (user != null)
+        if (user != null && TryValidateModel(viewModel.BasicInfo))
         {
             user.FirstName = viewModel.BasicInfo.FirstName;
             user.LastName = viewModel.BasicInfo.LastName;
             user.PhoneNumber = viewModel.BasicInfo.Phone;
             user.Bio = viewModel.BasicInfo.Bio;
+        }
+
+        if (viewModel.BasicInfo.ProfileImage != null)
+        {
+            byte[] fileBytes;
+            using var memoryStream = new MemoryStream();
+            await viewModel.BasicInfo.ProfileImage.CopyToAsync(memoryStream);
+            fileBytes = memoryStream.ToArray();
+
+            user!.ProfileImage = fileBytes;
         }
 
         var result = await _userManager.UpdateAsync(user!);

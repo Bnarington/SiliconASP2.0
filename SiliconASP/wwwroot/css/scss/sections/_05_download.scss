@@ -2,8 +2,7 @@
     margin-top: 2rem;
     display: flex;
     flex-direction: row;
-    background: $gray-100;
-
+    background: var(--color-gray-100);
     justify-content: center;
 
     .download-picture {
@@ -18,14 +17,11 @@
 
     .store-texts {
         display: flex;
-
         flex-direction: column;
         text-align: center;
 
         p {
             @include standard-text;
-            
-
         }
 
         .choice {

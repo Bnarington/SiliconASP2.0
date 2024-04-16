@@ -12,10 +12,10 @@ input {
     @include shadow-m;
     border-radius: 0.5rem;
     border: 1px solid var(--Gray-400, #D4D7E5);
-    background: var(--White, #FFF);
+    background: var(--color-white);
     width: 100%;
-    padding: 0.5rem;   
-    }
+    padding: 0.5rem;
+}
 
 input[type="checkbox"] {
     width: 2rem;
@@ -29,5 +29,5 @@ label {
 }
 
 a {
-    color: var(--Brand-Primary, #6366F1);
+    color: var(--color-theme);
 }

@@ -88,35 +88,3 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
         return RedirectToAction("Index", "Home");
     }
 }
-
-
-//    if (ModelState.IsValid)
-//    {
-//        var result = await _userService.SignInUserAsync(model.Form);
-//        if (result != null)
-//        {
-//            var userEntity = (UserEntity)result.ContentResult!;
-
-//            if (userEntity != null)
-//            {
-//                var claims = new List<Claim>
-//                {
-//                new(ClaimTypes.NameIdentifier, userEntity.Id.ToString()),
-//                new(ClaimTypes.Name, userEntity.Email),
-//                new(ClaimTypes.Email, userEntity.Email)
-//                };
-//                await HttpContext.SignInAsync("AuthCookie", new ClaimsPrincipal(new ClaimsIdentity(claims, "AuthCookie")));
-//                return RedirectToAction("Details", "Account");
-//            }
-//        }
-//    }
-
-//    model.ErrorMessage = "Invalid Email or Password";
-//    return View(model);
-//}
-
-//public new async Task<IActionResult> SignOut()
-//{
-//    await HttpContext.SignOutAsync();
-//    return RedirectToAction("SignIn", "Auth");
-//}

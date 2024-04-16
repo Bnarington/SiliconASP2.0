@@ -1,7 +1,5 @@
 header {
     padding: 15px 0;
-
-
     .container {
         display: flex;
         align-items: center;
@@ -103,7 +101,7 @@ header {
                 width: 2rem;
                 border: 0;
                 aspect-ratio: 1;
-                top: 2 rem;
+                top: 2rem;
                 right: 2rem;
             }
 
@@ -196,5 +194,5 @@ header {
     a:hover {
         color: #01447e;
         text-decoration: underline;
-    };
+    }
 }

@@ -1,7 +1,7 @@
 .top-tools {
     padding: 3rem;
     margin-top: 5rem;
-    background-color: #F3F6FF;
+    background-color: var(--color-gray-100);
 
     @include xl {
         max-width: 1920px;
@@ -67,7 +67,6 @@
             box-sizing: border-box;
             border-radius: 5%;
             box-shadow: 0px 2px 6.4px -1px rgba(19, 16, 34, 0.03), 0px 4.4px 12px -1px rgba(19, 16, 34, 0.06);
-
         }
     }
 }

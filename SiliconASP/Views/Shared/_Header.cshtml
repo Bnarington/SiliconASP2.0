@@ -1,5 +1,11 @@
 ﻿@inject SignInManager<UserEntity> _signInManager
 
+@{
+    var themeMode = Context.Request.Cookies["theme"] ?? "light";
+    var isDark = (themeMode == "dark") ? true : false;
+}
+
+
 <header>
     <div class="container">
         <img id="logo" src="~/Images/Silicon Logotype - Light Mode.svg" alt="Logo of the site, it shows the periodic table number for silicon with the words silicon next to it.">
@@ -42,7 +48,7 @@
                     <div class="btn-switch">
                         <label>Light</label>
                         <label class="switch" for="switch-mode">
-                            <input type="checkbox" id="switch-mode" />
+                            <input type="checkbox" id="switch-mode" checked="@isDark" />
                             <span class="slider round"></span>
                         </label>
                         <label>Dark</label>

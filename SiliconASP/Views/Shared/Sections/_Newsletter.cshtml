@@ -15,11 +15,12 @@
             </label>
         }
     </div>
-    <form method="post" action="@Url.Action("Subscibe", "Newsletter")">
+    <form method="post" asp-controller="Home" asp-action="NewsletterSubscribe">
         <div class="newsletters-email">
-            <label asp-for=@Model.Newsletter></label>
-            <input asp-for=@Model.Newsletter />                      
-            <button class="btn-theme">Subscribe*</button>
+            <label asp-for=Newsletter></label>
+            <input asp-for=Newsletter.Email />
+            <span asp-validation-for="Newsletter" class="error error-styling"></span>
+            <button type="submit" class="btn-theme" formmethod="post">Subscribe*</button>
             <p>* Yes, I agree to the <a href="@Model.TermsLink">@Model.TermsLink.Text</a> and <a href="@Model.PrivacyLink">privacy</a>@Model.PrivacyLink.Text</p>
         </div>
     </form>

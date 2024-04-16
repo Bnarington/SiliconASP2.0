@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace Infrastructure.Models;
@@ -25,7 +26,11 @@ public class AccountBasicInfoModel
 
     [DataType(DataType.MultilineText)]
     [MaxLength(500)]
-    [Display(Name = "Biography", Prompt = "Write something about yourself!", Order = 4)]
+    [Display(Name = "Biography (Optional)", Prompt = "Write something about yourself!", Order = 4)]
     public string? Bio {  get; set; }
-    public string ProfileImage { get; set; } = null!;
+
+    [Display(Name = "Priofile Image", Prompt = "Add a profile image!")]
+    public IFormFile? ProfileImage { get; set; } = null!;
+
+    public string? ProfileImageSrc { get; set; }
 }

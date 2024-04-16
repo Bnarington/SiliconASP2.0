@@ -1,13 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Infrastructure.Entities;
+using Infrastructure.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using SiliconASP.ViewModels.Sections;
 using SiliconASP.ViewModels.Sections.Components;
 using SiliconASP.ViewModels.Sections.Views;
-
-
+using System.Net.Http;
+using System.Text;
 namespace SiliconASP.Controllers;
 
-public class HomeController : Controller
+public class HomeController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager, HttpClient httpClient) : Controller
 {
+    private readonly UserManager<UserEntity> _userManager = userManager;
+    private readonly SignInManager<UserEntity> _signInManager = signInManager;
+    private readonly HttpClient _httpClient = httpClient;
+
     public IActionResult Index()
     {
         var viewModel = new HomeIndexViewModel
@@ -140,5 +148,28 @@ public class HomeController : Controller
 
         ViewData["title"] = viewModel.Title;
         return View(viewModel);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> NewsletterSubscribe(NewsletterViewModel model){
+
+        if (!ModelState.IsValid)
+        {
+            return View("~/Views/Shared/Sections/_Newsletter.cshtml", model);
+        }
+
+        var email = model.Newsletter!.Email;
+
+        var url = $"https://localhost:7202/api/subscribe?email={(Uri.EscapeDataString(email))}";
+
+        var response = await _httpClient.PostAsync(url, null);
+
+        if (response.IsSuccessStatusCode)
+        {
+            return RedirectToAction("Index");
+        } else
+        {
+            return RedirectToAction("Index");
+        }
     }
 }

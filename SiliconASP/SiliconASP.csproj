@@ -40,6 +40,16 @@
     <None Include="wwwroot\css\scss\_components.scss" />
     <None Include="wwwroot\css\scss\_core.scss" />
     <None Include="wwwroot\css\scss\_sections.scss" />
+    <None Include="wwwroot\Images\Courses\banner-illustration.svg" />
+    <None Include="wwwroot\Images\Courses\c1.svg" />
+    <None Include="wwwroot\Images\Courses\c2.svg" />
+    <None Include="wwwroot\Images\Courses\c3.svg" />
+    <None Include="wwwroot\Images\Courses\c4.svg" />
+    <None Include="wwwroot\Images\Courses\c5.svg" />
+    <None Include="wwwroot\Images\Courses\c6.svg" />
+    <None Include="wwwroot\Images\Courses\c7.svg" />
+    <None Include="wwwroot\Images\Courses\c8.svg" />
+    <None Include="wwwroot\Images\Courses\c9.svg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,6 +59,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>

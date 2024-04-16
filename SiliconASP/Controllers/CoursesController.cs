@@ -1,46 +1,38 @@
 ﻿using Infrastructure.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using SiliconASP.ViewModels.Sections;
+
 
 namespace SiliconASP.Controllers
 {
-
-    public class CoursesController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager) : Controller
+    [Authorize]
+    public class CoursesController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager, HttpClient httpClient) : Controller
     {
 
         private readonly UserManager<UserEntity> _userManager = userManager;
         private readonly SignInManager<UserEntity> _signInManager = signInManager;
+        private readonly HttpClient _httpClient = httpClient;
 
         [Route("/Courses")]
-        public IActionResult Courses()
+        public async Task<IActionResult> Courses()
         {
             if (!_signInManager.IsSignedIn(User))
                 return RedirectToAction("SignIn", "Auth");
 
-            return View();
+            var viewModel = new CourseIndexViewModel();
+
+            var response = await _httpClient.GetAsync("https://localhost:7202/api/courses");
+            if (response.IsSuccessStatusCode)
+            {
+                var courses = JsonConvert.DeserializeObject<IEnumerable<CoursesViewModel>>(await response.Content.ReadAsStringAsync());
+                if (courses != null && courses.Any())
+                    viewModel.Courses = courses;
+            }
+
+            return View(viewModel);
         }
-
-        //public IActionResult Categories()
-        //{
-        //    var categories = db.Categories.ToList();
-        //    return View(categories);
-        //}
-
-        //public IActionResult Search(string serachQuery, string category)
-        //{
-        //    var courses = db.Courses.AsQueryablle();
-
-        //    if(!string.IsNullOrEmpty(serachQuery))
-        //    {
-        //        courses = courses.Where(c => c.Title.Contains(serachQuery));
-        //    }
-
-        //    if (!string.IsNullOrEmpty(category) && category != "all-categories")
-        //    {
-        //        courses = courses.Where(c => c.Category == category);
-        //    }
-
-        //    return View(courses.ToList());
-        //}
     }
 }

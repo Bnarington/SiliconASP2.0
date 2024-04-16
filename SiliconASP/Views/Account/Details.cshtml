@@ -6,7 +6,7 @@
 
 <div class="top-details">
     <div class="sidebar">
-        <img src="" alt="" class="acc-pic">
+        <img src="@Model.BasicInfo.ProfileImageSrc" alt="" class="acc-pic">
         <button class="btn-refresh"></button>
         <h4>@Model.User.FirstName @Model.User.LastName</h4>
         <p class="email">@Model.User.Email</p>
@@ -17,7 +17,7 @@
 
 
     <div class="top-form">
-        <form method="post" asp-controller="Account" asp-action="BasicInfo" class="details-form" id="details-form">
+        <form method="post" asp-controller="Account" asp-action="BasicInfo" class="details-form" id="details-form" enctype="multipart/form-data">
 
             <div class="form-header">
                 <h1>Account detalis</h1>
@@ -58,6 +58,11 @@
                 <label asp-for=BasicInfo.Bio class="labels"></label>
                 <textarea asp-for=BasicInfo.Bio id="bio" cols="30" rows="10"></textarea>
                 <span asp-validation-for=BasicInfo.Bio class="error error-styling"></span>
+            </div>
+
+            <div>
+                <label asp-for="BasicInfo.ProfileImage" class="labels"></label>
+                <input type="file" asp-for=@Model.BasicInfo.ProfileImage />
             </div>
 
             <div class="buttons-float">

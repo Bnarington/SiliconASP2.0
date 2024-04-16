@@ -8,15 +8,20 @@
     @include shadow-s;
 }
 
-.signin-form {
+form {
     display: flex;
     flex-direction: column;
+    gap: 1rem;
 }
 
 .checkmark {
     display: flex;
     justify-content: flex-start;
     align-items:center;
+}
+
+.btn-theme-s {
+    width: 100%;
 }
 
 

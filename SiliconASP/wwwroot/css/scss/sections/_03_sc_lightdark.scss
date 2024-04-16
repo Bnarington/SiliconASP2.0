@@ -7,9 +7,9 @@
     grid-template-columns: auto auto;
 
     .darkmode {
-        background: #0b0f19 ;
+        background: var(--color-gray-900);
         display: flex;
-        
+
         h1 {
             display: flex;
             justify-content: center;
@@ -18,7 +18,7 @@
             height: 100%;
             @include text-lead; // Add missing mixin
             font-weight: 800;
-            color: white;
+            color: var(--color-white);
             text-align: center;
         }
     }
@@ -28,7 +28,7 @@
         justify-items: center;
 
 
-        h1{
+        h1 {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -37,7 +37,7 @@
             text-align: center;
             @include text-lead; // Add missing mixin
             font-weight: 800;
-            color: black;
+            color: var(--color-black);
         }
     }
-}   
+}

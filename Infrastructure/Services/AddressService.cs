@@ -8,7 +8,7 @@ public class AddressService(AddressRepo repository)
 {
     private readonly AddressRepo _repository = repository;
 
-    public async Task<ResponseResult> GetOrCreateAddressAsync(string streetName,string optionalStreet, string postalCode, string city)
+    public async Task<ResponseResult> GetOrCreateAddressAsync(string streetName, string optionalStreet, string postalCode, string city)
     {
         try
         {
@@ -29,7 +29,7 @@ public class AddressService(AddressRepo repository)
     {
         try
         {
-            var existingAddress = await _repository.EntityAlreadyExistsAsync(x => x.StreetName == streetName && x.OptionalStreet == optionalStreet&& x.PostalCode == postalCode && x.City == city);
+            var existingAddress = await _repository.EntityAlreadyExistsAsync(x => x.StreetName == streetName && x.OptionalStreet == optionalStreet && x.PostalCode == postalCode && x.City == city);
             if (existingAddress.MyStatusCode == MyStatusCode.NOT_FOUND)
             {
                 var newAddress = AddressFactory.Create(streetName, optionalStreet, postalCode, city);
@@ -60,9 +60,9 @@ public class AddressService(AddressRepo repository)
     {
         try
         {
-           var addressEntity = await _repository.GetOneAsync(x => x.Id == addressId);
+            var addressEntity = await _repository.GetOneAsync(x => x.Id == addressId);
 
-           if (addressEntity == null)
+            if (addressEntity == null)
             {
                 return null!;
             }
