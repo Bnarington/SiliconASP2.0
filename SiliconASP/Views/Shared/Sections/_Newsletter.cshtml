@@ -1,10 +1,10 @@
 ﻿@model NewsletterViewModel
 
-<div class="top-newsletter">
+<section id="newsletter" class="top-newsletter">
     <div class="newsletter-header">
         <h1>@Model.Title</h1>
         <p>@Model.Description</p>
-        <img src="@Model.Image.ImageURL" alt="@Model.Image.AltText">
+        <img src="@Model.Image!.ImageURL" alt="@Model.Image.AltText">
     </div>
 
     <div class="newsletter-checkboxes">
@@ -15,13 +15,20 @@
             </label>
         }
     </div>
-    <form method="post" asp-controller="Home" asp-action="NewsletterSubscribe">
+    <form method="post" asp-controller="Home" asp-action="Index">
         <div class="newsletters-email">
             <label asp-for=Newsletter></label>
-            <input asp-for=Newsletter.Email />
-            <span asp-validation-for="Newsletter" class="error error-styling"></span>
+            <input asp-for=Newsletter!.Email />
+            @if (TempData.ContainsKey("ErrorMessage"))
+            {
+                <span class="error error-styling">@TempData["ErrorMessage"]</span>
+            }
+            else
+            {
+                <span asp-validation-for="Newsletter.Email" class="error error-styling"></span>
+            }
             <button type="submit" class="btn-theme" formmethod="post">Subscribe*</button>
-            <p>* Yes, I agree to the <a href="@Model.TermsLink">@Model.TermsLink.Text</a> and <a href="@Model.PrivacyLink">privacy</a>@Model.PrivacyLink.Text</p>
+            <p>* Yes, I agree to the <a href="@Model.TermsLink">@Model.TermsLink!.Text</a> and <a href="@Model.PrivacyLink">privacy</a>@Model.PrivacyLink!.Text</p>
         </div>
     </form>
-</div>
+</section>

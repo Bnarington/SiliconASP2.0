@@ -72,7 +72,7 @@ public class HomeController(UserManager<UserEntity> userManager, SignInManager<U
             {
                 Id = "Downloads",
                 Title = "Download Our App for Any Device",
-                Image = new ImageViewModel() { ImageURL = "Images/downlads-picture.svg", AltText = "Picture of two phones with management and calander." },
+                Image = new ImageViewModel() { ImageURL = "~/Images/downlads-picture.svg", AltText = "Picture of two phones with management and calander." },
                 AppStore = new ReviewViewModel()
                 {
                     Title = "App Store",
@@ -145,17 +145,23 @@ public class HomeController(UserManager<UserEntity> userManager, SignInManager<U
 
         };
 
+        if (TempData.TryGetValue("ErrorMessage", out object? value))
+        {
+            ModelState.AddModelError("WrongEmail", value!.ToString()!);
+        }
+
 
         ViewData["title"] = viewModel.Title;
         return View(viewModel);
     }
 
     [HttpPost]
-    public async Task<IActionResult> NewsletterSubscribe(NewsletterViewModel model){
+    public async Task<IActionResult> Index(NewsletterViewModel model){
 
         if (!ModelState.IsValid)
         {
-            return View("~/Views/Shared/Sections/_Newsletter.cshtml", model);
+            TempData["ErrorMessage"] = "Invalid Email address.";
+            return Redirect(Url.Action("Index", "Home") + "#newsletter");
         }
 
         var email = model.Newsletter!.Email;
@@ -169,6 +175,7 @@ public class HomeController(UserManager<UserEntity> userManager, SignInManager<U
             return RedirectToAction("Index");
         } else
         {
+            TempData["ErrorMessage"] = "Invalid Email address.";
             return RedirectToAction("Index");
         }
     }
