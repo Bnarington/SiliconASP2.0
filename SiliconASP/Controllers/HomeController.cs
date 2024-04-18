@@ -72,7 +72,7 @@ public class HomeController(UserManager<UserEntity> userManager, SignInManager<U
             {
                 Id = "Downloads",
                 Title = "Download Our App for Any Device",
-                Image = new ImageViewModel() { ImageURL = "~/Images/downlads-picture.svg", AltText = "Picture of two phones with management and calander." },
+                Image = new ImageViewModel() { ImageURL = "Images/downlads-picture.svg", AltText = "Picture of two phones with management and calander." },
                 AppStore = new ReviewViewModel()
                 {
                     Title = "App Store",
